@@ -1,0 +1,120 @@
+<div class="span-4">
+<b><%= User.human_attribute_name("fullname") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.fullname %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("login") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.login %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("email") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.email %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("time_zone") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.time_zone %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("active") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.active.to_s %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("login_count") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.login_count %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("last_request_at") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.last_request_at || "Never" %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("last_login_at") %>:</b>
+</div>
+<div class="span-14 last"><%=h @user.last_login_at || "Never" %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("current_login_at") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.current_login_at || "Never" %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("last_login_ip") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.last_login_ip || "Never" %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("current_login_ip") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.current_login_ip || "Never" %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("crypted_password") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.crypted_password %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("password_salt") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.password_salt %>
+</div>
+
+<div class="span-4">
+<b><%= User.human_attribute_name("persistence_token") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.persistence_token || "Never" %>
+</div>
+
+<hr class="plain"/>
+<% unless @user.roles.blank? %>
+<div class="span-4">
+<b><%= User.human_attribute_name("roles") %>:</b>
+</div>
+<div class="span-14 last">
+<% for role in @user.roles %>
+  <%= role.to_s %>
+<% end %>&nbsp;
+</div>
+<% end %>
+
+<% unless @user.accepted_roles.blank? %>
+<div class="span-4">
+<b><%= User.human_attribute_name("accepted_roles") %>:</b>
+</div>
+<div class="span-14 last">
+<% for role in @user.accepted_roles %>
+  <%= role.name.capitalize %>
+<% end %>&nbsp;
+</div>
+<% end %>
+<hr class="plain"/>

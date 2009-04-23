@@ -1,0 +1,20 @@
+<% fields_for "order[order_product_lines_attributes][]", cart_line do |f| %>
+<tr class="<%= cycle('odd', 'even') %>">
+  <td><% unless f.object.product.get_first_picture.nil? %>
+      <%= image_tag f.object.product.get_first_picture.data.url(:tiny) %>
+      <% else %>
+      <div class="middle">No<br />Picture</div>
+      <% end %>
+  </td>
+  <td><%= h f.object.name %>
+  </td>
+  <td class="numeric"><%= f.object.display_unit_price %>
+  </td>
+  <td class="numeric">
+  <%= f.select :quantity, (0..10).map {|x|[x,x]}, :class => "numeric" %>
+  </td>
+  <td class="numeric"><%= f.object.display_line_total %>
+  </td><%= f.hidden_field :id %>
+</tr>
+<% end %>
+

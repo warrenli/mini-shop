@@ -1,0 +1,59 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+admin:
+  id: 1
+  login: admin_superuser
+  fullname: Web Master
+  crypted_password: d7788c0bf198625918f7a46f32065ded95ea17e664aa379659fc3399eb093bba08c1699732d99ce9d08c57f52d2908d59062b57a7c3597cbf102ded9f91e59d9
+  password_salt: 5f4fb2dfe031588a3f100a177e2a73a90dd077322bc0396921b31dbdecc431fd0c175b2dd476e60e15046257a96595a95d262b296fa7904e8e5b9ed45b907384
+  persistence_token: ec726e3277b33e8a11bb16a0162df0b69a2a03418542122a2a63c5dbaf02a1a967b041280badf579da8efced8d924693f91c0e2edb56b0e06fb59f9192b7b3ce
+  perishable_token: ciJQ3kopqEEhDZxF5StT
+  login_count:      1
+  email:            admin@example.com
+  time_zone:        "Hong Kong"
+  active:           true
+  last_request_at:  <%= 1.days.ago.to_s :db %>
+  last_login_at:    <%= 1.days.ago.to_s :db %>
+  current_login_at: <%= 1.days.ago.to_s :db %>
+  last_login_ip:    127.0.0.1
+  current_login_ip: 127.0.0.1
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>
+
+inactive:
+  id: 2
+  login: inactive_user
+  fullname: Some Body
+  persistence_token: d5518179819cca1f6126db1b2bacfd548d9640263210318aeb951239abab419379865f646150cc34bfef879a8ad5d19f1d8b7ac6ff2f2ed35058bb00d622316a
+  perishable_token: YgAwJPL1elgGOxlssPJt
+  login_count:      0
+  email:            inactive@example.com
+  time_zone:        "Hong Kong"
+  active:           false
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>
+
+example:
+  id: 3
+  login: example_user
+  fullname: Examle User
+  crypted_password: f9fb076f4e99888d4b334b38746efe629de2fa9c129a67adc909c115b2e7e44ea9d9732bcf5dfee7a37479ba021d4caa0ac9e843ea881ae068e786d964b3f4d8
+  password_salt: d6e688f4b8321e644e5a2e5e381cedb8fe803509fbee4e23b9bacf08932e688e776a58d2b10e79b5a7c415bdcbf82aad7af8b78389a145cd31e8ec9cdfc43805
+  persistence_token: c6c9cc3ef1ed675cd514aca32cf43de0e213851f3fb207a1d8d6fed04ba876c25c2c80cebcff7545118b85b356ef9a6e68d244146836900b6add24cefa7397fd
+  perishable_token: sGdR908Huj1InqSz45b8
+  login_count:      1
+  email:            example@example.com
+  time_zone:        "Hong Kong"
+  active:           true
+  last_request_at:  <%= 1.days.ago.to_s :db %>
+  last_login_at:    <%= 1.days.ago.to_s :db %>
+  current_login_at: <%= 1.days.ago.to_s :db %>
+  last_login_ip:    127.0.0.1
+  current_login_ip: 127.0.0.1
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>

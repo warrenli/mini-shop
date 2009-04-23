@@ -1,0 +1,45 @@
+<div id="login">
+<%= title t("user_sessions.new.page_title"), :h2 %>
+<hr class="plain"/>
+<% form_for @user_session, :url => user_session_path do |f| %>
+  <%= f.error_messages %>
+  <p>
+  <label><%= t("user_sessions.new.login_or_email") %></label>
+  <br />
+  <%= f.text_field :login, :size => "30"  %>
+  </p>
+
+  <p>
+  <%= f.label :password %>
+  <br />
+  <%= f.password_field :password, :size => "30"  %>
+  </p>
+
+  <p>
+  <%= f.submit t("user_sessions.new.login_button") %> &nbsp;&nbsp;
+  <%= t('user_sessions.new.or') %> &nbsp;&nbsp;
+  <%= link_to_unless_current t('user_sessions.new.signup_link'), new_account_path %>
+  </p>
+
+  <p>
+  <a href="#" id="forgot_password"><%= t('user_sessions.new.forgot_password_link') %></a>
+  </p>
+
+<% end %>
+</div>
+<div id="reset_password">
+<%= render :partial => "password_resets/reset" %>
+</div>
+<% content_for :foot do %>
+<script type="text/javascript">
+$(document).ready(function($) {
+ $("#reset_password").hide();
+
+ $("#forgot_password").click(function(e){
+  e.preventDefault();
+  $("#login").hide();
+  $("#reset_password").show();
+ });
+})
+</script>
+<% end %>

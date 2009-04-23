@@ -1,0 +1,79 @@
+<div class="prepend-3 span-16 append-3 last">
+<%= title t("users.edit.page_title"), :h2 %>
+</div>
+<hr class="plain"/>
+
+<div class="span-4 prepend-4">
+<b><%= User.human_attribute_name("login") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.login %>
+</div>
+
+<div class="span-4 prepend-4">
+<b><%= User.human_attribute_name("email") %>:</b>
+</div>
+<div class="span-14 last">
+<%=h @user.email %> (<%= link_to t("users.edit.change_email_link"), url_for(:controller => 'change_email', :action => 'new') %>)
+</div>
+
+<% unless @user.roles.blank? %>
+<div class="span-4 prepend-4">
+<b><%= User.human_attribute_name("roles") %>:</b>
+</div>
+<div class="span-14 last">
+<% for role in @user.roles %>
+  <%= role.to_s %>
+<% end %>&nbsp;
+</div>
+<% end %>
+
+<% unless @user.accepted_roles.blank? %>
+<div class="span-4 prepend-4">
+<b><%= User.human_attribute_name("accepted_roles") %>:</b>
+</div>
+<div class="span-14 last">
+<% for role in @user.accepted_roles %>
+  <%= role.name.capitalize %>
+<% end %>&nbsp;
+</div>
+<% end %>
+
+<hr class="plain"/>
+<div class="prepend-3 span-16 append-3 last">
+<% form_for @user, :url => account_path do |f| %>
+<fieldset>
+<legend><%= t("users.edit.legend_title") %></legend>
+  <%= f.error_messages %>
+  <div class="span-4 prepend-1">
+  <%= f.label :fullname %>
+  </div>
+  <div class="span-10 ">
+  <%= f.text_field :fullname %>
+  </div>
+  <div class="span-4 prepend-1">
+  <%= f.label :time_zone %>
+  </div>
+  <div class="span-10 ">
+  <%= f.time_zone_select :time_zone, [ ActiveSupport::TimeZone.new('Hong Kong') ] %>
+  </div>
+  <div class="span-4 prepend-1">
+  <%= f.label :password, f.object.new_record? ? nil : t('users.edit.new_password') %>
+  </div>
+  <div class="span-10 ">
+  <%= f.password_field :password %>
+  </div>
+  <div class="span-4 prepend-1">
+  <%= f.label :password_confirmation %>
+  </div>
+  <div class="span-10 ">
+  <%= f.password_field :password_confirmation %>
+  </div>
+  <hr class="plain"/>
+  <div class="prepend-5 span-10 ">
+  <%= f.submit t("users.edit.update_button") %>
+  </div>
+</fieldset>
+<% end %>
+</div>
+<hr class="plain"/>

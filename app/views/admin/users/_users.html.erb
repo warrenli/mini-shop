@@ -1,0 +1,54 @@
+<% if @users_count > 0 %>
+  <div class="span-17 prepend-1 last">
+  <b><%= t("admin.users.index.found") + " " + @users_count.to_s %>
+  <%= t("activerecord.models.user", :count => @users_count) %></b>
+  </div>
+  <div class="span-4 prepend-1">
+  <% if @users_count > 10 %>
+  <label class="follow_by_select"><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  <% end %>
+  </div>
+  <div class="span-13 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+  <hr class="plain"/>
+  <table class="list">
+  <tr>
+    <th><%= order_by_link :fullname, :text => User.human_attribute_name('fullname') %></th>
+    <th><%= order_by_link :login, :text => User.human_attribute_name('login') %></th>
+    <th><%= order_by_link :email, :text => User.human_attribute_name('email') %></th>
+    <th><%= User.human_attribute_name('active') %></th>
+    <th><%= t("admin.users.index.actions_header") %></th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td nowrap><%=h user.fullname %></td>
+    <td><%=h user.login %></td>
+    <td><%=h user.email %></td>
+    <td><%=h user.active %></td>
+    <td nowrap><%= link_to t("admin.users.common.edit_link"), edit_admin_user_path(user) %> |
+    <%= link_to t("admin.users.common.show_link"), admin_user_path(user) %> |
+    <%= link_to t("admin.users.common.destroy_link"), admin_user_path(user), :confirm => t("admin.users.common.confirm_msg"), :method => :delete %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+  <hr class="plain"/>
+  <div class="span-4 prepend-1">
+  <% if @users_count > 10 %>
+  <label class="follow_by_select"><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  <% end %>
+  </div>
+  <div class="span-13 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+<% else %>
+  <%= t('application.no_record_found') %>
+<% end %>
+<hr class="plain"/>

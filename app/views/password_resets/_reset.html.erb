@@ -1,0 +1,15 @@
+<%= title t('password_resets.new.page_title'), :h2 %>
+<hr class="plain"/>
+<%= t('password_resets.new.instruction') %><br /><br />
+<% form_tag password_resets_path do %>
+  <p>
+  <label><%= t('password_resets.new.email_label') %>:</label>
+  <br />
+  <%= text_field_tag "email", nil, :size => "30" %>
+  </p>
+
+  <p>
+  <%= submit_tag t('password_resets.new.submit_button') %>
+  </p>
+<% end %>
+<hr class="plain"/>

@@ -1,0 +1,56 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.lightbox-0.5.min" %>
+<%= stylesheet_link_tag 'jquery.lightbox-0.5' %>
+<% end %>
+<%= title t("manage.packages.show.page_title"), :h2 %>
+
+<div class="span-22 last">
+  <%= render :partial => "manage/products/product", :object => @package %>
+</div>
+<p style="float:right"><b><%= t('manage.products.common.note_msg') %></b><p>
+<hr class="plain clear" />
+
+<div class="span-11">
+  <fieldset>
+  <div class="left">
+  <h4><%= t('product.description') %></h4>
+  <%=h @package.description %>
+  </div>
+  </fieldset>
+</div>
+
+<div class="span-11 last">
+  <fieldset>
+  <div class="left">
+  <h4><%= t('product.pictures') %></h4>
+  <% @package.pictures.each do |picture| %>
+    <a href="<%= picture.data.url(:large) %>" rel="lightbox[' + product.code + ']' %>"><%= image_tag(picture.data.url(:thumb)) %></a>
+  <% end %>
+  </div>
+  </fieldset>
+</div>
+
+<hr class="plain clear" />
+
+<div class="span-22 last">
+  <fieldset>
+  <h4><%= t('product.components') %></h4>
+  <%= render :partial => "acomponent", :collection => @package.components %>
+  </fieldset>
+</div>
+
+<hr class="plain clear" />
+
+<%= edit_product_link(@package) %> |
+<%= destroy_product_link(@package) %> |
+<%= search_product_link %>
+
+<% content_for :foot do %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("a[rel^='lightbox']").livequery(function(){
+    $("a[rel^='lightbox']").lightBox({fixedNavigation:true});
+  });
+});
+</script>
+<% end %>

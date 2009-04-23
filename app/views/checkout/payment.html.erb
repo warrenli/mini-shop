@@ -1,0 +1,80 @@
+<%= title t('checkout.payment.page_title'), :h2 %>
+
+<% if RAILS_ENV != "production" %>
+<div align="center">
+<b><%= Order.human_attribute_name('order_num') %>:</b> <%= h @order.order_num %>&nbsp;
+<b><%= Order.human_attribute_name('ip_address') %>:</b> <%= h @order.ip_address %><br/>
+<b><%= Order.human_attribute_name('placed_at') %>:</b> <%= h @order.placed_at.to_s %>&nbsp;
+<b><%= Order.human_attribute_name('state') %>:</b> <%= h @order.state %>&nbsp;
+<b><%= Order.human_attribute_name('token') %>:</b> <%= h @order.token %>&nbsp;
+</div>
+<% end %>
+
+<div class="prepend-1 append-1">
+  <% if @order.billing_address.valid? %>
+  <div style="float:left;">
+  <b><%= t('orders.common.billing_address') %></b><br />
+    <%= render :partial => 'orders/address', :object => @order.billing_address %>
+  </div>
+  <% end %>
+
+  <% if @order.shipping_address.valid? %>
+  <div style="float:right;">
+  <b><%= t('orders.common.shipping_address') %></b><br />
+    <%= render :partial => 'orders/address', :object => @order.shipping_address %>
+  </div>
+  <% end %>
+</div>
+
+<%= render :partial => 'orders/order', :object => @order%>
+
+<div align="center"><h4>Please <%= link_to "login in PayPal Sandbox", DEV_CENTRAL_URL, :popup =>true %> before trying payment processing in below</h4></div>
+
+<div>
+  <div class="span-10">
+  <fieldset>
+  <legend><%= t('checkout.payment.card_payment') %></legend>
+    <% form_tag '/checkout/pay_dp', :method => :put do %>
+      <table>
+      <tr>
+      <th colspan="2"><%= t('checkout.payment.card_safety_msg') %></th>
+      </tr>
+      <tr>
+      <th><label><%= t('checkout.payment.card_type') %>:</label></th>
+      <td><%= select_tag("creditcardtype", options_for_select(["Visa","MasterCard", "Amex"], "Visa") ) %></td>
+      </tr>
+      <tr>
+      <th><label><%= t('checkout.payment.card_number') %>:</label></th>
+      <td><%= text_field_tag "acct" ,'', {:size => 19, :maxlength => 19} %></td>
+      </tr>
+      <tr>
+      <th><label><%= t('checkout.payment.expiration_date') %>:</label></th>
+      <td>
+      <%= select_month Date.today, :use_month_names => %w(01 02 03 04 05 06 07 08 09 10 11 12) %>
+      <%= select_year Date.today, :start_year => Date.today.year, :end_year => Date.today.year + 10 %>
+      </td>
+      </tr>
+      <tr>
+      <th><label>CVV2:</label>&nbsp;&nbsp;<image src="/images/cvv-glyph.png"/></th>
+      <td><%= text_field_tag "cvv2", '999', { :size => 4, :maxlength => 4 } %></td>
+      </tr>
+      <tr>
+      <th>&nbsp;</th>
+      <td><%= submit_tag t('checkout.payment.pay_button') %></td>
+      </tr>
+      </table>
+      <b><%= t('checkout.payment.warning_msg') %></b>
+    <% end %>
+  </fieldset>
+  </div>
+  <div class="span-5">
+  <h4 align="center"><%= t('checkout.payment.or')%></h4>
+  </div>
+  <div class="span-6 last" align="center">
+  <% form_tag '/checkout/pay_ec', :method => :put do %>
+  <%= image_submit_tag "https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" %>
+  <% end %>
+  </div>
+</div>
+<hr class="plain"/>
+<p class="right"><%= link_to t('checkout.common.shopping_link'), root_url %></p>

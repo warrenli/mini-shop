@@ -1,0 +1,46 @@
+<% if @item_count > 0 %>
+  <div class="left width-100">
+  <%= t("manage.products.index.found") + " " + @item_count.to_s %>
+  <%= t("activerecord.models.item", :count => @item_count) %>&nbsp;
+  <% if @search.page_count > 1 %>
+    <%= page_links %>&nbsp;
+  <% end %>
+  </div>
+  <hr class="plain"/>
+  <% @items.each do |item| %>
+  <div class="item left width-100">
+  <div>
+    <% picture = item.get_first_picture %>
+    <% if picture %>
+    <div class="span-2">
+      <%= image_tag picture.data.url(:tiny) if picture %>
+    </div>
+    <% else %>
+    <div class="span-2" style="border: solid 1px red; height: 60px;">
+      <b><%= t('product.no_picture') %></b>
+    </div>
+    <% end %>
+    <div class="span-5">
+    <%=h item.code %> <%=h item.display_name %> (ID: <%= item.id%>)
+    </div>
+    <% unless item.is_published %>
+    <div class="span-1">
+    <b><%= t('product.not_published') %></b>
+    </div>
+    <% end %>
+    <div class="left">
+    <input id="package_components_attributes__item_id" name="package[components_attributes][][item_id]" value="<%= item.id %>" type="hidden" />
+    </div>
+  </div>
+  <a href="#" class="add_component"><%= t('manage.products.common.add') %></a>
+  </div>
+  <% end %>
+<% else %>
+  <%= t('manage.packages.common.no_item_found') %>
+<% end %>
+<hr class="plain"/>
+
+
+
+
+

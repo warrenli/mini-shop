@@ -1,0 +1,26 @@
+<% fields_for "item[downloads_attributes][]", download do |f| %>
+<% unless f.object.new_record? %>
+<div class="span-9 download">
+  <div class="left">
+  <%= f.text_field :position, :index => nil, :size => 1 %>
+  </div>
+  <div class="left">
+  <%= h f.object.data_file_name %>
+  </div>
+  <div class="left width-100">
+  <%= f.label :_delete, t('manage.products.common.remove_it'), :index => nil %>
+  <%= f.check_box :_delete, :index => nil %> 
+  <%= f.hidden_field :id, :index => nil %>(ID: <%= f.object.id %>)
+  </div>
+</div>
+<% else %>
+<div class="span-9 download">
+  <div class="left">
+  <%= f.text_field :position, :size => 1 %>
+  </div>
+  <%= f.file_field :data, :size => 22 %>
+  <a href="#" class="remove_download_new"><%= t('manage.products.common.remove') %></a>
+</div>
+<% end %>
+<% end %>
+

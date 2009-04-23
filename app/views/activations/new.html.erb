@@ -1,0 +1,10 @@
+<%= title t("activations.new.page_title"), :h2 %>
+<hr class="plain"/>
+<% form_for @user, :url => activate_path(@user.id), :html => { :method => :post } do |form| %>
+  <%= form.error_messages %>
+  <%= render :partial => "form", :locals => { :form => form }%>
+  <div class="prepend-4 span-11 last">
+  <%= form.submit t("activations.new.activate_button")%>
+  </div>
+<% end %>
+<hr class="plain"/>

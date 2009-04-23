@@ -1,0 +1,56 @@
+<%= title t('checkout.review.page_title'), :h2 %>
+
+<% if RAILS_ENV != "production" %>
+<div align="center">
+<b><%= Order.human_attribute_name('order_num') %>:</b> <%= h @order.order_num %>&nbsp;
+<b><%= Order.human_attribute_name('ip_address') %>:</b> <%= h @order.ip_address %><br/>
+<b><%= Order.human_attribute_name('placed_at') %>:</b> <%= h @order.placed_at.to_s %>&nbsp;
+<b><%= Order.human_attribute_name('state') %>:</b> <%= h @order.state %>&nbsp;
+<b><%= Order.human_attribute_name('token') %>:</b> <%= h @order.token %>&nbsp;
+</div>
+<% end %>
+
+<div class="span-22 last">
+<fieldset>
+<h4><%= t('checkout.review.confirm_message') %></h4>
+
+<p style="float:left;margin-left:20px;">
+<b><%= t('checkout.review.payer') %></b><br/>
+<%= @payment.get_ec_response_params["LASTNAME"] %>&nbsp;<%= @payment.get_ec_response_params["FIRSTNAME"] %>
+</p>
+
+<p style="float:left;margin-left:20px;">
+<b><%= t('checkout.review.email') %></b><br/>
+<%= @payment.get_ec_response_params["EMAIL"] %>
+</p>
+<p style="float:left;margin-left:20px;">
+<b><%= t('checkout.review.amount') %></b><br/>
+<%= @payment.get_ec_response_params["CURRENCYCODE"] %>&nbsp;<%= @payment.get_ec_response_params["AMT"] %>
+</p>
+
+<p style="float:left;margin-left:20px;">
+<%= button_to t('checkout.review.confirm_button'), :controller => 'checkout', :action => 'confirm' %>
+</p>
+</fieldset>
+</div>
+
+<div class="prepend-1 append-1">
+  <% if @order.billing_address.valid? %>
+  <div style="float:left;">
+  <b><%= t('orders.common.billing_address') %></b><br />
+    <%= render :partial => 'orders/address', :object => @order.billing_address %>
+  </div>
+  <% end %>
+
+  <% if @order.shipping_address.valid? %>
+  <div style="float:right;">
+  <b><%= t('orders.common.shipping_address') %></b><br />
+    <%= render :partial => 'orders/address', :object => @order.shipping_address %>
+  </div>
+  <% end %>
+</div>
+
+<%= render :partial => 'orders/order', :object => @order%>
+
+<hr class="plain"/>
+

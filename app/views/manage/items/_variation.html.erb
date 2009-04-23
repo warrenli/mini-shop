@@ -1,0 +1,66 @@
+<% fields_for "item[variations_attributes][]", variation do |f| %>
+<% unless f.object.new_record? %>
+<div class="left variation">
+  <div class="span-1">
+  <br />
+  <%= f.text_field :position, :size => 1, :index => nil %>
+  </div>
+  <div class="span-3">
+  <%= f.label :code %> (ID: <%= f.object.id %>)<br />
+  <%= f.text_field :code, :size => 10, :index => nil %>
+  </div>
+  <div class="span-5">
+  <%= f.label :name %><br />
+  <%= f.text_field :name, :size=> 25, :index => nil %>
+  </div>
+  <div class="span-4">
+  <%= f.label :price %><br />
+  <%= f.text_field :currency_code, :readonly => true, :size => 3, :index => nil %>
+  <%= f.text_field :price, :style=> "direction: rtl;", :size => 6, :index => nil %>
+  </div>
+  <div class="span-3">
+  <% # = f.label :is_published, "Published?" %><br />
+  <% # = f.check_box :is_published, :index => nil %>
+  <% if f.object.is_published %>
+    <br/><b><%= t('product.published') %></b>
+  <% else %>
+    <br/><b><%= t('product.not_published') %></b>
+  <% end %>
+  </div>
+  <div class="span-1">
+  <%= f.hidden_field :id, :index => nil %><br />
+  <%= edit_product_link(f.object) %>
+  </div>
+</div>
+<% else %>
+<div class="left variation">
+  <div class="span-1">
+  <br />
+  <%= f.text_field :position, :size => 1 %>
+  </div>
+  <div class="span-3">
+  <%= f.label :code %><br />
+  <%= f.text_field :code, :size => 10 %>
+  </div>
+  <div class="span-5">
+  <%= f.label :name %><br />
+  <%= f.text_field :name, :size=> 25 %>
+  </div>
+  <div class="span-4">
+  <%= f.label :price %><br />
+  <%= f.text_field :currency_code, :readonly => true, :size => 3 %>
+  <%= f.text_field :price, :style=> "direction: rtl;", :size => 6 %>
+  </div>
+  <div class="span-3">
+  <% # = f.label :is_published, "Published?" %><br />
+  <% # = f.check_box :is_published %>
+  <br/><b><%= t('product.not_published') %></b>
+  </div>
+  <div class="span-1">
+  <br />
+  <a href="#" class="remove_variation_new"><%= t('manage.products.common.remove') %></a>
+  </div>
+</div>
+<% end %>
+<% end %>
+

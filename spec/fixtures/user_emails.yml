@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+email_01:
+  id:                       1
+  user_id:                  1
+  new_email:                old_1@example.com
+  old_email:                old_0@example.com
+  request_code:             111
+  request_expiration_date:  <%= 5.days.ago.to_s :db %>
+  confirmed_at:             <%= 5.days.ago.to_s :db %>
+  status:                   confirmed
+  created_at:               <%= 5.days.ago.to_s :db %>
+  updated_at:               <%= 5.days.ago.to_s :db %>
+
+email_02:
+  id:                       2
+  user_id:                  1
+  new_email:                old_2@example.com
+  old_email:                old_1@example.com
+  request_code:             222
+  request_expiration_date:  <%= 4.days.ago.to_s :db %>
+  confirmed_at:             <%= 4.days.ago.to_s :db %>
+  status:                   confirmed
+  created_at:               <%= 4.days.ago.to_s :db %>
+  updated_at:               <%= 4.days.ago.to_s :db %>
+
+email_03:
+  id:                       3
+  user_id:                  1
+  new_email:                old_3@example.com
+  old_email:                old_2@example.com
+  request_code:             333
+  request_expiration_date:  <%= 3.days.ago.to_s :db %>
+  status:                   requested
+  created_at:               <%= 4.days.ago.to_s :db %>
+  updated_at:               <%= 4.days.ago.to_s :db %>

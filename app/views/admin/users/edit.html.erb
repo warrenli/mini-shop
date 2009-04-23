@@ -1,0 +1,31 @@
+<%= title t("admin.users.edit.page_title"), :h2 %>
+<hr class="plain"/>
+<% form_for([:admin, @user]) do |f| %>
+<%= f.error_messages %>
+<%= render :partial => "form", :object => f %>
+<div class="span-4 prepend-2">
+<b><%= User.human_attribute_name("roles") %>:</b>
+</div>
+<div class="span-12 last">
+<% for role in @user.roles %>
+  <%= role.to_s %>&nbsp;&nbsp;&nbsp;
+<% end %><br />
+</div>
+<div class="span-4 prepend-2">
+<b><%= User.human_attribute_name("accepted_roles") %>:</b>
+</div>
+<div class="span-12 last">
+<% for role in @user.accepted_roles %>
+  <%= role.name.capitalize %>
+<% end %>
+</div>
+<div class="prepend-6 span-12 last">
+<%= f.submit t("admin.users.edit.update_button") %>
+</div>
+<% end %>
+<hr class="plain"/>
+<%= render :partial => "change_role" %>
+<hr class="plain">
+<%= link_to t("admin.users.common.show_link"), admin_user_path(@user) %> |
+<%= link_to t("admin.users.common.search_link"), admin_users_path %>
+<hr class="plain"/>

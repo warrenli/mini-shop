@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+usa:
+  id: 840
+  alpha_3_code: "USA"
+  alpha_2_code: "US"
+  name: "United States"
+  official_name: "United States of America"
+
+hkg:
+  id: 344
+  alpha_3_code: "HKG"
+  alpha_2_code: "HK"
+  name: "Hong Kong"
+  official_name: "Hong Kong Special Administrative Region of China"
+

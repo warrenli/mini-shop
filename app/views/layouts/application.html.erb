@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title><%= h(@page_title || "Mini Shop") %></title>
+  <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
+  <link rel="icon" href="/images/favicon.ico" type="image/png" />
+  <meta name="keywords" content="<%= h @meta_keywords.gsub(/<\/?[^>]*>/, "") %>" />
+  <meta name="description" content="<%= h @meta_description.gsub(/<\/?[^>]*>/, "") %>" />
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <%= stylesheet_link_tag 'application' %>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://malsup.com/jquery/form/jquery.form.js"></script>
+  <%= javascript_include_tag "jquery.livequery" %>
+  <%= javascript_include_tag "jquery.mousewheel.min" %>
+  <%= javascript_include_tag "jquery.scrollable-1.0.2.min" %>
+
+  <!-- additional head elements -->
+  <%= yield :head %>
+</head>
+<body>
+<div id="language_header">
+  <div class="language_bar container">
+    <p><%= locale_link("en-US", "English") %> <%= locale_link("zh-HK", "中文") %></p>
+  </div>
+</div>
+<div id="header">
+  <div class="container">
+    <div id="header_title" class="span-12">
+     <span><%= t("app.site_title") %></span>
+    </div>
+    <div id="header_nav" class="span-12 last">
+      <span>
+      <% if !current_user %>
+        <% # = link_to_unless_current t('app.menu.???'), ???_path %>
+      <% else %>
+        <%= current_user.fullname %>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <% end %>
+      <%= link_to t('app.menu.my_account'), :controller => 'current_user', :action => 'index' %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to_unless_current t('app.menu.cart'), cart_path %>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="container" class="container showgrid">
+  <div id="main_body" class="span-24 last">
+  <%= render :partial=>"layouts/#{controller.sub_layout}" %>
+  <% # = render :partial=>"layouts/col_1_22_1" %>
+  </div>
+</div>
+<div class="container">
+  <div id="footer">
+    <p>Copyright &copy; 2009</p>
+  </div>
+</div>
+<!-- additional elements e.g. javascript -->
+<%= javascript_include_tag 'rounded-min' %>
+<%= yield :foot %>
+<script type="text/javascript">
+ $(document).ready(function($) {
+   $("#flash-notice").livequery(function(){
+     $(this).fadeOut( 10000 );
+   });
+ })
+</script>
+</body>
+</html>

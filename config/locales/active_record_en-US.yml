@@ -1,0 +1,203 @@
+en-US:
+  authlogic:
+    error_messages:
+      login_blank: can not be blank
+      login_not_found: does not exist
+      login_invalid: should use only letters, numbers and .-_@ please.
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: should look like an email address.
+      password_blank: can not be blank
+      password_invalid: is not valid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      no_authentication_details: You did not provide any details for authentication.
+    models:
+      user_session: "User Session"
+    attributes:
+      user_session:
+        login: "Login/Email"
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember Me"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "{{count}} error prohibited this {{model}} from being saved"
+          other:  "{{count}} errors prohibited this {{model}} from being saved"
+        # The variable :count is also available
+        body: "There were problems with the following fields:"
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is {{count}} characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        equal_to: "must be equal to {{count}}"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        odd: "must be odd"
+        even: "must be even"
+        # Append your own errors here or at the model/attributes scope.
+        #  msg_login_bad: "use only letters, numbers, and .-_@ please."
+        #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
+        #  msg_email_bad: "should look like an email address."
+        msg_email_invalid: "is not a valid email address"
+        msg_login_bad: "is invalid"
+        msg_simple_word: "is invalid (alphanumerics, hyphens and underscores only)"
+        msg_must_accept: "must be accepted"
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and
+      # custom blank validation message for login attribute of User model.
+      models:
+
+    # Translate model names. Used in Model.human_name().
+      # For example,
+      #   user: "Dude"
+      # will translate User model name to "Dude"
+    models:
+      user:
+        one: "User"
+        other: "Users"
+      product:
+        one: "Product"
+        other: "Products"
+      package:
+        one: "Package"
+        other: "Package"
+      item:
+        one: "Item"
+        other: "Items"
+      picture:
+        one: "Picture"
+        other: "Pictures"
+      download:
+        one: "Download"
+        other: "Dowloads"
+      order:
+        one: "Order"
+        other: "Orders"
+      order_product_line:
+        one: "Order Product Line"
+        other: "Order Product Lines"
+      address:
+        one: "Address"
+        other: "Addresses"
+      payment:
+        one: "Payment"
+        other: "Payments"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"
+    attributes:
+      user:
+        login: "Login"
+        email: "Email"
+        fullname: "Full Name"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        crypted_password: "Crypted Password"
+        password_salt: "Password Salt"
+        persistence_token: "Persistence Token"
+        login_count: "Login Count"
+        perishable_token: "Perishable_token"
+        time_zone: "Time Zone"
+        active: "Active?"
+        last_request_at: "Last Request At"
+        last_login_at: "Last Login At"
+        current_login_at: "Current Login At"
+        last_login_ip: "Last Login IP"
+        current_login_ip: "Current Login IP"
+        roles: "Has Roles"
+        accepted_roles: "Accepted Roles"
+        terms_of_service: "Terms of Service"
+      user_email:
+        new_email: "New Email"
+      product:
+        type: "Type"
+        code: "Code"
+        name: "Name"
+        currency_cde: "Currency"
+        price: "Price"
+        rank: "Rank"
+        is_published: "Published"
+        date_available: "Date Available"
+        description: "Description"
+        position: "Position"
+#        count_of_variations: "Variation Count"
+#        parent_id: "Parent"
+      order:
+        state: "State"
+        has_checked_out: "Checkout?"
+        currency_code: "Currency"
+        ip_address: "IP Address"
+#        user_id: "User"
+        note: "Note"
+        order_num: "Order No."
+        placed_at: "Order Date"
+        total: "Total"
+        product_total: "Product Total"
+        tax_total: "Tax Total"
+        shipping_total: "Shipping Total"
+        discount_total: "Discount Total"
+        billing_address_street_1: "Billing Address　Street line one"
+        billing_address_city: "Billing Address　City"
+        billing_address_postal_code: "Billing Address　Zip"
+        billing_address_country: "Billing Address Country"
+        shipping_address_street_1: "Shipping Address　Street line one"
+        shipping_address_city: "Shipping Address　City"
+        shipping_address_postal_code: "Shipping Address　Zip"
+        shipping_address_country: "Shipping Address Country"
+        recipient: "Recipient"
+      order_line:
+#        order_id: "Order
+#        type: "Type"
+#        print_sequence: "Print Sequence"
+        code: "Code"
+        name: "Name"
+        description: "Description"
+        price: "Price"
+        quantity: "Quantity"
+#        product_id: "Product"
+      address:
+        street_1: "Street"
+        street_2: "Street line two"
+        city: "City"
+        postal_code: "Zip"
+        country: "Country"
+      payment:
+#        order_id: "Order"
+        state: "State"
+#        method_type: "Method Type"
+        currency_code: "Currency"
+        total_amoount: "Total Amount"
+        payment_txn_id: "Transaction ID"
+        payment_type: "Payment Type"
+        payment_status: "Payment Status"
+        payer: "Payer"
+        payer_email: "Email"
+#        get_params: "GetExpressCheckoutDetails"
+#        result_params: "Resultant Parameters"

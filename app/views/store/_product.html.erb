@@ -1,0 +1,67 @@
+<div class="span-16 last" >
+<span class="product_title"><%= h product.display_name %></span>
+<hr class="plain" />
+</div>
+<div class="span-8 middle" >
+<% unless product.get_first_picture.nil? %>
+ <%= image_tag product.get_first_picture.data.url(:small) %><br/>
+<% else %>
+  <h2>No Picture</h2>
+<% end %>
+<br />
+<div>
+  <% product.pictures.each do |picture| %>
+    <a href="<%= picture.data.url(:large) %>" rel="lightbox[' + product.code + ']' %>"><%= image_tag(picture.data.url(:tiny)) %></a>
+  <% end %>
+</div>
+</div>
+
+<div class="span-8">
+<p class="product_title"><%= h product.display_price %></p>
+
+<p>
+<%= h product.get_description %>
+</p>
+
+<% form_tag '/store/add_to_cart' do %>
+<% if product.is_a?(Item) and not product.variations.empty? %>
+  <% product.variations.published.each do |variation| %>
+  <p>
+    <%= radio_button_tag "product[id]", variation.id, true %>&nbsp;&nbsp;
+    <%= variation.name %>&nbsp;&nbsp;
+    <%= variation.display_price %>
+  </p>
+  <% end %>
+<% else %>
+  <%= hidden_field_tag "product[id]", product.id %>
+<% end %>
+  <p class="lbl_select_pair">
+  <label><%= t('product.qty') %></label>&nbsp;
+  <%= select_tag "product[qty]", (1..10).map {|x| "<option>" + x.to_s + "</option>"}, :class => "numeric" %>&nbsp;&nbsp;
+  <%= submit_tag t('store.show.add_button') %>
+  </p>
+<% end %>
+<img src="https://www.paypalobjects.com/en_US/i/bnr/bnr_nowAccepting_150x40.gif"/>
+
+</div>
+
+<hr class="plain clear">
+
+<% if product.product_type == Product::PACKAGE and product.items %>
+  <b><%= t('store.show.package_contains_msg') %></b><br />
+  <% product.items.published.in_groups_of(3,false) do |item_row| %>
+    <% for item in item_row do %>
+      <p style="float:left; padding: 10px; width: 200px;">
+      <% if item.variation? %>
+        <%= link_to h(item.display_name), store_path(item.parent_item.code) %>
+      <% else %>
+        <%= link_to h(item.display_name), store_path(item.code) %>
+      <% end %><br />
+      <% unless item.get_first_picture.nil? %>
+        <%= image_tag item.get_first_picture.data.url(:thumb) %>
+      <% end %>
+      </p>
+    <% end %>
+    <hr class="plain clear">
+  <% end %>
+<% end %>

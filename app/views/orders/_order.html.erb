@@ -1,0 +1,21 @@
+<div class="contain_list">
+<table class="list">
+<tr>
+  <th><%= Product.human_name %></th>
+  <th><%= OrderLine.human_attribute_name('name') %></th>
+  <th class="middle" width="100"><%= OrderLine.human_attribute_name('price') %></th>
+  <th class="middle" width="50"><%= t('product.qty') %></th>
+  <th class="middle" width="100"><%= t('orders.common.subtotal') %></th>
+</tr>
+  <%= render :partial => "orders/product_line", :collection => order.order_product_lines %>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td class="numeric"><% # = order.display_total %></td>
+  <td class="numeric"><%= t('orders.common.total') %></td>
+  <td class="numeric"><%= order.display_product_total %></td>
+</tr>
+</table>
+</div>
+<hr class="plain"/>
+

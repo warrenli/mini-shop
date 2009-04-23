@@ -1,0 +1,15 @@
+<div class="prepend-3 span-16 append-3 last">
+<%= title t("change_email.edit.page_title"), :h2 %>
+<hr class="plain"/>
+<p><%= t("change_email.edit.page_description") %><%= @user_email.new_email %></p>
+
+<% form_tag('/change_email/update', :method => :put) do %>
+  <div class="span-15 last">
+  <%= hidden_field_tag "request_code", @user_email.request_code %>
+  </div>
+  <div class="prepend-4 span-11 last">
+  <%= submit_tag t("change_email.edit.submit_button") %>
+  </div>
+<% end %>
+<hr class="plain"/>
+</div>

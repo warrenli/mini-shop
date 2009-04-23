@@ -1,0 +1,38 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.lightbox-0.5.min" %>
+<%= stylesheet_link_tag 'jquery.lightbox-0.5' %>
+<% end %>
+<div id="single_product" class="span-17 last">
+  <%= render( :partial => 'product', :object => @product) unless @product.nil? %>
+</div>
+
+<% content_for :foot do %>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function() {
+  // initialize scrollable
+  $("div.scrollable").scrollable({vertical:true, size: 3, loop: false, clickable: false, speed: 50 });
+
+  // Change all link helpers to use ajax
+  $('a.select_product').livequery('click', function() {
+    $('#single_product').load(this.href);
+    return false;
+  })
+
+  $("#loading").ajaxStart(function(){
+    $(this).show();
+  });
+  $("#loading").ajaxStop(function(){
+    $(this).hide();
+  });
+
+  $("a[rel^='lightbox']").livequery(function(){
+    $("a[rel^='lightbox']").lightBox({fixedNavigation:true});
+  });
+
+});
+</script>
+<% end %>

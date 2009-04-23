@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+bill_address:
+  type: "BillingAddress"
+  addressable_id: 1
+  addressable_type: "Order"
+  street_1: "123 Fake Street"
+  street_2: "Apartment 456"
+  city: "Somewhere"
+  postal_code: "12345"
+  country_id: 840
+
+ship_address:
+  type: "ShippingAddress"
+  addressable_id: 1
+  addressable_type: "Order"
+  street_1: "123 Fake Street"
+  street_2: "Apartment 456"
+  city: "Somewhere"
+  postal_code: "12345"
+  country_id: 840

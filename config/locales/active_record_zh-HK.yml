@@ -1,0 +1,203 @@
+zh-HK:
+  authlogic:
+    error_messages:
+      login_blank: "不可以留空"
+      login_not_found: "找不到有關帳戶"
+      login_invalid: "只可以包含英文字母　數字　.　-　_　@"
+      consecutive_failed_logins_limit_exceeded: "由於連續多次登入失敗，帳戶停止使用"
+      email_invalid: "不符合格式"
+      password_blank: "不可以留空"
+      password_invalid: "不符合要求"
+      not_active: "您的帳戶未啟動"
+      not_confirmed: "您的帳戶未確認"
+      not_approved: "您的帳戶未核準"
+      no_authentication_details: "您未有輸入帳戶資料"
+    models:
+      user_session: "登入 時段"
+    attributes:
+      user_session:
+        login: "帳戶名稱/電郵"
+        email: "電郵地址"
+        password: "帳戶密碼"
+        remember_me: "Remember Me"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "共有{{count}}個錯誤導致“{{model}}”無法被保存"
+          other: "共有{{count}}個錯誤導致“{{model}}”無法被保存"
+        # The variable :count is also available
+        body: "下面的字段出現錯誤："
+      messages:
+        inclusion: "沒有包含在本列表中"
+        exclusion: "是保留關鍵字"
+        invalid: "無效"
+        confirmation: "與確認輸入的內容不一致"
+        accepted: "必須被接受"
+        empty: "不能留空"
+        blank: "不能留空"
+        too_long: "超出長度範圍了(最多允許{{count}}個字符)"
+        too_short: "太短了 (不能少於{{count}}個字符)"
+        wrong_length: "長度錯誤 (應當包含{{count}}個字符)"
+        taken: "已經被使用了"
+        not_a_number: "不是數字"
+        greater_than: "必須大於"
+        greater_than_or_equal_to: "必須大於等於"
+        equal_to: "必須等於"
+        less_than: "必須小於"
+        less_than_or_equal_to: "必須小於等於"
+        odd: "必須是奇數"
+        even: "必須是偶數"
+        # Append your own errors here or at the model/attributes scope.
+        #  msg_login_bad: "請使用英文字母、數字或 . - _ @"
+        #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
+        #  msg_email_bad: "請使用正確電郵"
+        msg_email_invalid: "電郵地址無效"
+        msg_login_bad: "無效"
+        msg_simple_word: "只可以包含 字母　數字　-　或　_　"
+        msg_must_accept: "必需要接納"
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and
+      # custom blank validation message for login attribute of User model.
+      models:
+
+    # Translate model names. Used in Model.human_name().
+      # For example,
+      #   user: "Dude"
+      # will translate User model name to "Dude"
+    models:
+      user:
+        one: "帳戶"
+        other: "帳戶"
+      product:
+        one: "商品"
+        other: "商品"
+      package:
+        one: "商品套裝"
+        other: "商品套裝"
+      item:
+        one: "商品項目"
+        other: "商品項目"
+      picture:
+        one: "圖片"
+        other: "圖片"
+      download:
+        one: "下載檔"
+        other: "下載檔"
+      order:
+        one: "訂購單"
+        other: "訂購單"
+      order_product_line:
+        one: "購物單項目"
+        other: "購物單項目"
+      address:
+        one: "地址"
+        other: "地址"
+      payment:
+        one: "付款"
+        other: "付款"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"
+    attributes:
+      user:
+        login: "帳戶名稱"
+        email: "電郵地址"
+        fullname: "姓名"
+        password: "帳戶密碼"
+        password_confirmation: "確認密碼"
+        crypted_password: "Crypted Password"
+        password_salt: "Password Salt"
+        persistence_token: "Persistence Token"
+        login_count: "Login Count"
+        perishable_token: "Perishable_token"
+        time_zone: "時區"
+        active: "已啟動?"
+        last_request_at: "Last Request At"
+        last_login_at: "Last Login At"
+        current_login_at: "Current Login At"
+        last_login_ip: "Last Login IP"
+        current_login_ip: "Current Login IP"
+        roles: "職責"
+        accepted_roles: "接受監督"
+        terms_of_service: "服務條款"
+      user_email:
+        new_email: "新電郵地址"
+      product:
+        type: "類別"
+        code: "編碼"
+        name: "名稱"
+        currency_cde: "貨幣"
+        price: "售價"
+        rank: "等級"
+        is_published: "生效"
+        date_available: "生效日期"
+        description: "商品說明"
+        position: "次序"
+#        count_of_variations: "Variation Count"
+#        parent_id: "Parent"
+      order:
+        state: "狀態"
+        has_checked_out: "已結帳?"
+        currency_code: "貨幣"
+        ip_address: "IP Address"
+#        user_id: "User"
+        note: "摘要"
+        order_num: "訂購單編號"
+        placed_at: "訂購日期"
+        total: "合計"
+        product_total: "商品小計"
+        tax_total: "稅"
+        shipping_total: "處理費"
+        discount_total: "折扣"
+        billing_address_street_1: "帳單地址　街道第一欄"
+        billing_address_city: "帳單地址　城市"
+        billing_address_postal_code: "帳單地址　郵區編碼"
+        billing_address_country: "帳單地址　國家"
+        shipping_address_street_1: "收貨地址　街道第一欄"
+        shipping_address_city: "收貨地址　城市"
+        shipping_address_postal_code: "收貨地址　郵區編碼"
+        shipping_address_country: "收貨地址　國家"
+        recipient: "收貨人"
+      order_line:
+#        order_id: "Order
+#        type: "Type"
+#        print_sequence: "Print Sequence"
+        code: "編碼"
+        name: "名稱"
+        description: "商品說明"
+        price: "售價"
+        quantity: "數量"
+#        product_id: "Product"
+      address:
+        street_1: "街道"
+        street_2: "街道"
+        city: "城市"
+        postal_code: "郵區編碼"
+        country: "國家"
+      payment:
+#        order_id: "Order"
+        state: "狀態"
+#        method_type: "Method Type"
+        currency_code: "貨幣"
+        total_amoount: "總金額"
+        payment_txn_id: "交易編碼"
+        payment_type: "交易分類"
+        payment_status: "交易狀態"
+        payer: "付款人"
+        payer_email: "電郵地址"
+#        get_params: "GetExpressCheckoutDetails"
+#        result_params: "Resultant Parameters"

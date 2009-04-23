@@ -1,0 +1,116 @@
+zh-HK:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%y-%m-%d"
+      long: "%Y年%m月%d日%A"
+
+    day_names: [星期日, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [周日, 周一, 周二, 周三, 周四, 周五, 周六]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    # Used in date_select and datime_select.
+    order: [ :year, :month, :day ]
+
+  time:
+    formats:
+      default: "%Y-%m-%d ahh:%M:%S"
+      short: "%y-%m-%d ah:%M"
+      long: "%Y年%m月%d日%A ahh时%M分%S秒%Z"
+    am: "上午"
+    pm: "下午"
+
+# Used in array.to_sentence.
+  support:
+    array:
+      sentence_connector: "和"
+      skip_last_comma: false
+
+  number:
+    # Used in number_with_delimiter()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: "."
+      # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: ","
+      # Number of decimals, behind the separator (the number 1 with a precision of 2 gives: 1.00)
+      precision: 3
+      
+    # Used in number_to_currency()
+    currency:
+      format:
+        # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%u%n"
+        unit: "$"
+        # These three are to override number.format and are optional
+        separator: "."
+        delimiter: ","
+        precision: 2
+        
+    # Used in number_to_percentage()
+    percentage:
+      format:
+        # These three are to override number.format and are optional
+        # separator: 
+        delimiter: ""
+        # precision: 
+        
+    # Used in number_to_precision()
+    precision:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+        
+    # Used in number_to_human_size()
+    human:
+      format:
+        # These three are to override number.format and are optional
+        # separator: 
+        delimiter: ""
+        precision: 1
+
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分鐘"
+      less_than_x_seconds:
+        one:   "小於 1 秒"
+        other: "小於  {{count}} 秒"
+      x_seconds:
+        one:   "1 秒"
+        other: "{{count}} 秒"
+      less_than_x_minutes:
+        one:   "小於 1 分"
+        other: "小於 {{count}} 分"
+      x_minutes:
+        one:   "{{count}}分鐘"
+        other: "{{count}}分鐘"
+      about_x_hours:
+        one:   "大約{{count}}小時"
+        other: "大約{{count}}小時"
+      x_days:
+        one:   "{{count}}天"
+        other: "{{count}}天"
+      about_x_months:
+        one:   "大約 1 個月"
+        other: "大約 {{count}} 個月"
+      x_months:
+        one:   "{{count}}個月"
+        other: "{{count}}個月"
+      about_x_years:
+        one:   "大約 1 年"
+        other: "大約 {{count}} 年"
+      over_x_years:
+        one:   "{{count}}年以上"
+        other: "{{count}}年以上"
+
+
+

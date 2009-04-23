@@ -1,0 +1,2 @@
+module ChangeEmailHelper
+end

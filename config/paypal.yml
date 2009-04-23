@@ -1,0 +1,29 @@
+# This is a configuration file to be read by
+#   PayPalSDKProfiles::Profile class
+#
+# Another option is to put these configuration data in file
+#    config/paypal_config.rb
+#
+
+#    # specify the 3-token values.
+#    USER: sdk-three_api1.sdk.com
+#    PWD:  QFZCWN5HZM8VBG7Q
+#    SIGNATURE: A.d9eRKfd1yVkRrtmMfCFLTqa6M9AyodL0SJkhYztxUi8W9pCXF6.4NI
+
+
+#    #    @@endpoints
+#    SERVER:  api-3t.sandbox.paypal.com
+#    SERVICE: /nvp/
+
+
+#    # Proxy information of the client environment.   @@proxy_info
+#    USE_PROXY:  false
+#    ADDRESS: nil
+#    PORT: nil
+#    USER: nil
+#    PASSWORD: nil 
+
+
+#    # Information needed for tracking purposes.   @@client_info
+#    VERSION: 3.0
+#    SOURCE: PayPalRubySDKV1.2.0

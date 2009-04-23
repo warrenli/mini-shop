@@ -1,0 +1,38 @@
+<%= title t("orders.index.page_title"), :h2 %>
+
+<div id="myorders">
+  <%= render :partial => "orders" %>
+</div>
+<hr class="plain" />
+
+<% content_for :foot do %>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function($) {
+  // Change per_page_select to use ajax
+  $('select.per_page').livequery(function() {
+    var onchange = $(this).attr('onchange').toString();
+    var matches = onchange.match(/window\.location = "(.*)" \+ this/);
+    var url
+    if (matches) {
+      url = matches[matches.length - 1];
+      $(this).attr('onchange', null)
+      $(this).change(function() {
+        $('#myorders').load(url + $(this).val());
+        return false;
+      })
+    }
+  })
+
+  // Change page_links to use ajax
+  $('a.order_by, a.page, a.prev_page, a.next_page').livequery('click', function() {
+    $('#myorders').load(this.href);
+    return false;
+  })
+})
+</script>
+<% end %>
+

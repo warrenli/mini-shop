@@ -1,0 +1,44 @@
+<%= title Order.human_attribute_name('order_num') +" "+ h(@order.order_num), :h2 %>
+
+<p>
+ <b><%= Order.human_attribute_name('placed_at') %>:</b> <%= h @order.placed_at.to_s %>&nbsp;&nbsp;
+ <b><%= Order.human_attribute_name('state') %>:</b> <%= h @order.state %>
+</p>
+<div class="prepend-1 span-20 append-1 last">
+<% unless @order.billing_address.blank? %>
+<div style="float:left;">
+<b><%= t('orders.common.billing_address') %></b><br />
+<%= render :partial => 'address', :object => @order.billing_address %>
+</div>
+<% end %>
+
+<% unless @order.shipping_address.blank? %>
+<div style="float:right;">
+<b><%= t('orders.common.shipping_address') %></b><br />
+<%= render :partial => 'address', :object => @order.shipping_address %>
+</div>
+<% end %>
+</div>
+
+<%= render :partial => 'order', :object => @order%>
+
+<div class="prepend-1 span-10" >
+ <b><%= h @order.note %></b><br /><br />
+ <div class="left">
+  <% if @order.completed_payment %>
+  <%= t('store.show.payment_method', :mthd => @order.completed_payment.method_type) %>
+  <% end %>
+ </div>
+</div>
+
+<div class="span-10 last" >
+ <% unless @order.download_links.blank? %>
+  <b><%= Download.human_name %></b><br />
+  <% @order.download_links.each do |link| %>
+   <%= link.download.data_file_name %><br />
+  <% end %>
+ <% end %>
+</div>
+
+<hr class="plain"/>
+<p class="right"><%= link_to t('checkout.common.shopping_link'), root_url %></p>

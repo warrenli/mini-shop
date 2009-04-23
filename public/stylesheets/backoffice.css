@@ -1,0 +1,261 @@
+body {background-color: #300033; margin: 0;font-size:0.9em;}
+#language_header { background-color: #300033; }
+.language_bar {
+color: #A648C1;
+text-align: right;
+font-size:0.7em;
+}
+.language_bar p {
+margin: 0;
+padding-right: 30px;
+padding-bottom: 5px;
+}
+.language_bar a {
+color: #770598;
+padding-left: 10px;
+padding-right: 10px;
+}
+.language_bar a:hover {
+color: #B860D1;
+}
+#header {
+background-color: #F8F8F8;
+min-height:80px;
+}
+#header_title {
+color: #360A4F;
+font-style: italic;
+font-size: 2.5em;
+margin: 0;
+padding: 5px 0px;
+}
+#container {
+background-color: #F8F8F8;
+}
+#main_body {
+background-color: #F8F8F8;
+min-height:350px;
+}
+#left_column {
+background-color: transparent;
+}
+#middle_column {
+background-color: #F8F8F8;
+}
+#right_column {
+background-color: transparent;
+}
+#footer {
+color: #FDFD95;
+text-align: center;
+margin: 0;
+padding-top: 10px;
+}
+
+/* === FLASH MESSAGES === */
+div#flash-notice {
+position:absolute;
+top: 200px;
+z-index: 10;
+width: 800px;
+font-size: 18px;
+font-weight: bold;
+text-align: center;
+color: #333;
+border: solid 2px #bd7;
+padding: 1em;
+margin: 1em;
+margin-bottom: 2em;
+background-color: #efe;
+}
+div#flash-warning {
+padding: 0 0 0 25px;
+}
+div#flash-error {
+color: red;
+border: 2px solid red;
+padding: 1em;
+margin: 1em;
+margin-bottom: 2em;
+background-color: #efe;
+}
+
+/* === ERROR MESSAGES === */
+#errorExplanation {
+border: 2px solid red;
+padding: 7px;
+padding-bottom: 12px;
+margin-bottom: 20px;
+background-color: #F8F8F8;
+}
+#errorExplanation h2 {
+text-align: left;
+font-weight: bold;
+padding: 5px 5px 5px 15px;
+font-size: 12pt;
+margin: -7px;
+background-color: #c00;
+color: #fff;
+}
+#errorExplanation p {
+color: #333;
+margin-bottom: 0;
+padding: 5px;
+}
+#errorExplanation ul {
+}
+#errorExplanation ul li {
+font-size: 11pt;
+list-style: square;
+}
+
+hr.plain {background:#F8F8F8;color:#F8F8F8;}  /* same as background color */
+.numeric {
+text-align: right;
+}
+div.left {
+float:left;
+margin:0 0 0 10px;
+padding: 0;
+}
+div.right {
+float:right;
+margin:0 0 0 10px;
+padding: 0;
+}
+div.top25 {
+position: relative; 
+top: 25px;
+bottom: 5px;
+}
+div.width-100 {
+width: 100%;
+}
+/*========= nav =========*/
+#nav_container { 
+background-color: #820023; 
+width:100%;
+border-bottom: solid 1px #F5D7D4;
+}
+#nav {
+background-color: #820023;
+margin: 0 0 0 0;
+padding: 0;
+height: 50px;
+}
+#nav ul {
+border: 0;
+margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+#nav ul li {
+display: block;
+float: left;
+text-align: center;
+padding: 0;
+margin: 0;
+}
+#nav ul li a {
+background: #820023;
+width: 120px;
+height: 50px;
+border-top: none;
+border-left: none;
+border-bottom: none;
+border-right: 1px solid #F5D7D4;
+padding: 0;
+margin: 0 0 0 0;
+color: #F5D7D4;
+text-decoration: none;
+display: block;
+text-align: center;
+font: normal 18px/32px "Lucida Grande", "Lucida Sans Unicode", verdana, lucida, sans-serif;
+}
+#nav ul li a:hover {
+color: #820023;
+background: #F5D7D4;
+}
+#nav #active { border-left: 1px solid #F5D7D4; }
+
+div.picture, div.variation, div.download, div.component, div.item {
+background-color: #C7FBED;
+padding: 5px 0;
+margin: 0;
+width: 100%;
+border-bottom: solid 2px #F8F8F8;
+}
+div.picture img{
+ margin:0; padding-top:5px;
+}
+/*==== fieldset and legend ===*/
+fieldset {
+border: 1px solid #AAA;
+}
+legend {
+font-size: 1.2em;
+margin-left: 1em;
+margin-bottom: 0.5em;
+padding: .4em;
+background: #ccc;
+border: 2px solid #AAA;
+}
+/*== table ==*/
+table.list {
+background: #fff;
+width: 100%;
+}
+table.list th {
+color: white;
+background: #666699;
+font-weight: bold;
+padding: 0.5em;
+white-space: nowrap;
+}
+table.list th a {
+color: white;
+text-decoration: underline;
+}
+table.list td {
+padding: 0.5em;
+}
+table.list tr.even td {
+background: #ddd;
+}
+table.list tr.odd td {
+background: #eee;
+}
+/* === Searchlogic pagination === */
+div.pages {
+font-weight: bold;
+}
+a.page, span.page {
+padding: 4px 6px;
+}
+a.page {
+margin: 0 3px;
+border: 1px solid #ddd;
+text-decoration: none;
+color: #0063dc;
+}
+a.page:hover {
+border: 1px solid #003366;
+background-color: #0063dc;
+color: #fff;
+}
+span.disabled_page {
+color: #b1aab1;
+}
+span.current_page {
+color: #ff0084;
+}
+p.page_links{
+margin-top:6px;
+}
+label.follow_by_select{
+float:left;
+margin-top:7px;
+}
+/* ==DynDateTime - For IE, override blueprint setting == */
+div.calendar table { width:auto !important;}

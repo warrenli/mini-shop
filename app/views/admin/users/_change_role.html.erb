@@ -1,0 +1,16 @@
+<hr class="plain">
+<% form_for @user, :url => change_role_admin_user_url(@user) do |f| %>
+<div class="prepend-6 span-12 last">
+
+<%= select_tag "opt", options_for_select([[t("admin.users.edit.add_role"), "Add"], [t("admin.users.edit.remove_role"), "Remove"]] ) %>
+&nbsp;&nbsp;
+<%= select_tag "role_name", options_for_select([["Is_Admin", "admin"], ["Is_Modulator", "modulator"]] ) %>
+
+<%= select_tag "class_name", options_for_select([["of_User", "user"]] ) %>
+
+</div>
+<div class="prepend-6 span-12 last">
+<%= f.submit t("admin.users.edit.update_role_button") %>
+</div>
+<% end %>
+

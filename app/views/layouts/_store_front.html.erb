@@ -1,0 +1,22 @@
+<div id="loading">Loading...</div>
+
+<!-- Left column here -->
+<div id="left_column" class="span-7">
+    <div class="scrollable">
+      <div class="items">
+      <%= render :partial=> 'product_brief', :collection=> @products %>
+      </div>
+    </div>
+    <div class="navi"></div>
+    <br clear="all" />
+</div>
+
+<!-- Middle column here -->
+<div id="middle_column" class="span-17 last">
+  <%= flash_messages %>
+  <hr class="plain" />
+  <%= yield :layout %>
+</div>
+
+<!-- Right column here -->
+<!-- div id="right_column" class="span-1 last">&nbsp;</div -->

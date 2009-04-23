@@ -1,0 +1,7 @@
+order_one:
+  id: 1
+  state: initialized
+  has_checked_out: 0
+  currency_code: "HKD"
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>

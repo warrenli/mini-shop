@@ -1,0 +1,13 @@
+<div id="cart" class="span-17 last">
+<%= render :partial => "cart", :object => @order %>
+</div>
+
+<% content_for :foot do %>
+<script type="text/javascript">
+$(document).ready(function() {
+  // initialize scrollable
+  $("div.scrollable").scrollable({vertical:true, size: 3, loop: false, clickable: false, speed: 50 });
+
+});
+</script>
+<% end %>

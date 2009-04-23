@@ -1,0 +1,57 @@
+<% if @orders_count > 0 %>
+  <div class="span-21 prepend-1 last">
+  <b><%= t("orders.index.found") + " " + @orders_count.to_s %>
+  <%= t("activerecord.models.order", :count => @orders_count) %></b>
+  </div>
+  <div class="span-4 prepend-1">
+  <% if @orders_count > 10 %>
+  <p class="lbl_select_pair">
+  <label><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  </p>
+  <% else %>&nbsp;
+  <% end %>
+  </div>
+  <div class="span-17 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+
+  <div class="contain_list">
+  <table class="list">
+  <tr>
+    <th><%= order_by_link :order_num, :text => Order.human_attribute_name('order_num') %></th>
+    <th><%= order_by_link :placed_at, :text => Order.human_attribute_name('placed_at') %></th>
+    <th><%= order_by_link :state, :text => Order.human_attribute_name('state') %></th>
+    <th class="middle" width="100"><%= order_by_link :total, :text => Order.human_attribute_name('total') %></th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to h(order.order_num), order_path(order.order_num) %></td>
+    <td><%= h order.placed_at %></td>
+    <td><%= h order.state %></td>
+    <td class="numeric"><%= h order.display_total %></td>
+  </tr>
+  <% end %>
+  </table>
+  </div>
+  <hr class="plain"/>
+  <div class="span-4 prepend-1">
+  <% if @orders_count > 10 %>
+  <p class="lbl_select_pair">
+  <label><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  </p>
+  <% else %>&nbsp;
+  <% end %>
+  </div>
+  <div class="span-17 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+<% else %>
+  <%= t('application.no_record_found') %>
+<% end %>
+<hr class="plain"/>

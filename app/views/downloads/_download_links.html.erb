@@ -1,0 +1,60 @@
+<% if @download_links_count > 0 %>
+  <div class="span-21 prepend-1 last">
+  <b><%= t("download.index.found") + " " + @download_links_count.to_s %>
+  <%= t("activerecord.models.download", :count => @download_links_count) %></b>
+  </div>
+  <div class="span-4 prepend-1">
+  <% if @download_links_count > 10 %>
+  <p class="lbl_select_pair">
+  <label><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  </p>
+  <% else %>&nbsp;
+  <% end %>
+  </div>
+  <div class="span-17 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+
+  <div class="contain_list">
+  <table class="list">
+  <tr>
+    <th width="150"><%= order_by_link :order_num, :text => Order.human_attribute_name('order_num') %></th>
+    <th><%= h t('download.index.product_name') %></th>
+    <th><%= h Download.human_name %></th>
+  </tr>
+  <% @download_links.each do |download_link| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td width="150"><%= link_to h(download_link.order_num), order_path(download_link.order_num) %></td>
+    <td>
+      <% unless download_link.item.get_first_picture.nil? %>
+      <%= image_tag download_link.item.get_first_picture.data.url(:tiny) %>
+      <% end %>
+      <%= h download_link.item.display_name %>
+    </td>
+    <td><%= link_to h(download_link.download.data_file_name), download_url(download_link.token) %></td>
+  </tr>
+  <% end %>
+  </table>
+  </div>
+  <hr class="plain"/>
+  <div class="span-4 prepend-1">
+  <% if @download_links_count > 10 %>
+  <p class="lbl_select_pair">
+  <label><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  </p>
+  <% else %>&nbsp;
+  <% end %>
+  </div>
+  <div class="span-17 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+<% else %>
+  <%= t('application.no_record_found') %>
+<% end %>
+<hr class="plain"/>

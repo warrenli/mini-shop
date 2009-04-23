@@ -1,0 +1,7 @@
+<ul>
+<li><%= link_to t('app.menu.manage_products'), manage_products_path, :id => 'active' %></li>
+<li><%= link_to t('app.menu.manage_orders'), manage_orders_path %></li>
+<li><%= link_to t('app.menu.admin_users'), admin_users_path %></li>
+<li><%= link_to t('app.menu.store'), root_path, :target => "_blank" %></li>
+<li><%= link_to t('app.menu.logout'), user_session_path, :method => :delete, :confirm => t('app.menu.logout_confirm') %></li>
+</ul>

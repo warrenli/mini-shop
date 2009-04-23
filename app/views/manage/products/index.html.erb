@@ -1,0 +1,85 @@
+<%= title t("manage.products.index.page_title"), :h2 %>
+
+<span style="float: right">
+<%= link_to t("manage.products.common.new_item_link"), new_manage_item_path %> |
+<%= link_to t("manage.products.common.new_product_link"), new_manage_package_path  %>
+</span>
+<br />
+
+<hr class="plain"/>
+<% form_for [:manage, @search], :html => {:id => "search_form"} do |f| %>
+<fieldset>
+  <legend><%= t("manage.products.index.legend")  %></legend>
+  <% f.fields_for @search.conditions do |products| %>
+    <div class="prepend-8 span-13 last">
+    <label class="follow_by_select"><%= t("manage.products.index.match") %></label>&nbsp;
+    <%= products.select :any, [ [t("manage.products.index.all"), false], [t("manage.products.index.any"), true] ] %>
+    </div>
+    <div class="span-5 prepend-3">
+    <label><%= t("manage.products.index.code_begins_with") %></label>
+    </div>
+    <div class="span-13 last">
+    <%= products.text_field :code_begins_with, :size => 30 %>
+    </div>
+    <div class="span-5 prepend-3">
+    <label><%= t("manage.products.index.name_contains") %></label>
+    </div>
+    <div class="span-13 last">
+    <%= products.text_field :name_contains, :size => 30 %>
+    </div>
+    <div class="span-5 prepend-3">
+    <label><%= t("manage.products.index.published?") %></label>
+    </div>
+    <div class="span-13 last">
+    <%= products.select :is_published, [ ["-----", ""], ["true", "1"], ["false", "0"] ] %>
+    </div>
+  <% end %>
+  <div class="prepend-8 span-13 last">
+  <%= submit_tag t("manage.products.index.search_button") %>
+  </div>
+</fieldset>
+<% end %>
+
+<hr class="plain"/>
+
+<div id="products">
+  <%= render :partial => "products" %>
+</div>
+
+<span style="float: right">
+<%= link_to t("manage.products.common.new_item_link"), new_manage_item_path %> |
+<%= link_to t("manage.products.common.new_product_link"), new_manage_package_path  %>
+</span>
+<% content_for :foot do %>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function($) {
+  // Change per_page_select to use ajax
+  $('select.per_page').livequery(function() {
+    var onchange = $(this).attr('onchange').toString();
+    var matches = onchange.match(/window\.location = "(.*)" \+ this/);
+    var url
+    if (matches) {
+      url = matches[matches.length - 1];
+      $(this).attr('onchange', null)
+      $(this).change(function() {
+        $('#products').load(url + $(this).val());
+        return false;
+      })
+    }
+  })
+
+  // Change page_links to use ajax
+  $('a.order_by, a.page, a.prev_page, a.next_page').livequery('click', function() {
+    $('#products').load(this.href);
+    return false;
+  })
+
+  // Change our search form to ajax
+  $('#search_form').ajaxForm({target: '#products'});
+})
+</script>
+<% end %>

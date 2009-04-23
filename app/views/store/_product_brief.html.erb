@@ -1,0 +1,11 @@
+<div>
+<%= link_to h(product_brief.display_name) + "<br/>" + product_brief.display_price, store_path(product_brief.code), :class => 'select_product' %><br/>
+<% unless product_brief.get_first_picture.nil? %>
+ <%= image_tag product_brief.get_first_picture.data.url(:thumb) %><br/>
+<% else %>
+ <br/>
+<% end %>
+<% if product_brief.pictures.empty? %>
+<%= h product_brief.get_description %>
+<% end %>
+</div>

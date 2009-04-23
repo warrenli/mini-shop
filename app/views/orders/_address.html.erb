@@ -1,0 +1,8 @@
+<%= address.street_1 %><br />
+<% unless address.street_2.blank? %>
+<%= address.street_2 %><br />
+<% end %>
+<%= address.city %><br />
+<%= address.postal_code %><br />
+<%= address.country.name %><br /><br />
+

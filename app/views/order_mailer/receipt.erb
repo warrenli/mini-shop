@@ -1,0 +1,50 @@
+尊貴的朋友
+Dear Friend
+
+
+多謝您訂購我們的商品
+Thank you for your order!
+
+
+請保存訂購單記錄
+Please retain the following order information for your records.
+
+
+摘要 Note: <%= @order.note %>
+
+訂購單編號 Order #: <%= @order.order_num %>
+訂購單合計 Total: <%= @order.display_total %>
+訂購日期 Order Date: <%= @order.placed_at.to_s %>
+
+
+<% unless @order.billing_address.blank? -%>
+帳單地址 BILLING ADDRESS
+----------------------
+<%= @order.billing_address.single_line %>
+<% end -%>
+
+<% unless @order.shipping_address.blank? -%>
+收貨地址 SHIPPING ADDRESS
+-----------------------
+<%= @order.shipping_address.single_line %>
+<% end -%>
+
+   #  售價 Price     商品名稱 Product Name
+------------------------------------------------
+   <% for product in @order.order_product_lines -%>
+<%= product.quantity %>   <%= product.display_unit_price %>   <%= product.name -%>
+<% end %>
+------------------------------------------------
+合計 Total: <%= @order.display_total -%>
+
+<% unless @order.completed_payment.nil? %>
+付款方法 Payment: <%= @order.completed_payment.method_type %>
+<% end %>
+
+
+多謝惠顧
+Thank you for your business
+
+
+<%= APP_CONFIG[:store_name] %>
+<%= APP_CONFIG[:store_url] %>

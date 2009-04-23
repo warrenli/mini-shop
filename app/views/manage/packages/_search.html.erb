@@ -1,0 +1,21 @@
+<br />
+<h4><%= t('manage.packages.common.search_item') %></h4>
+<% form_for @search, :url=>search_item_manage_packages_path, :html => {:id => "search_form"} do |f| -%>
+  <% f.fields_for @search.conditions do |items| %>
+    <div class="left">
+    <label><%= t("manage.products.index.code_begins_with") %></label><br />
+    <%= items.text_field :code_begins_with, :size => 10 %>
+    </div>
+    <div class="left">
+    <label><%= t("manage.products.index.name_contains") %></label><br/>
+    <%= items.text_field :name_contains, :size => 20 %>
+    </div>
+  <% end %>
+  <div class="left"><br />
+  <%= submit_tag t("admin.users.index.search_button") %>
+  </div>
+<% end %>
+<hr class="plain clear" />
+<div id="items">
+  <%= render :partial => "items" %>
+</div>

@@ -1,0 +1,65 @@
+<% if @order_count > 0 %>
+  <div class="span-21 prepend-1 last">
+  <b><%= t("manage.orders.index.found") + " " + @order_count.to_s %>
+  <%= t("activerecord.models.order", :count => @order_count) %></b>
+  </div>
+  <div class="span-4 prepend-1">
+  <% if @order_count > 10 %>
+  <label class="follow_by_select"><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  <% end %>
+  </div>
+  <div class="span-17 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+  <hr class="plain"/>
+  <table class="list">
+  <tr>
+    <th><%= User.human_attribute_name('email') %></th>
+    <th><%= order_by_link :order_num, :text => Order.human_attribute_name('order_num') %><br />
+        (ID)</th>
+    <th><%= order_by_link :placed_at, :text => Order.human_attribute_name('placed_at') %><br />
+        &lt;<%= Order.human_attribute_name('updated_at') %>&gt;</th>
+    <th><%= order_by_link :state, :text => Order.human_attribute_name('state') %></th>
+    <th widht="80"><%= t("manage.orders.index.empty?") %></th>
+    <th class="numeric" width="80"><%= Order.human_attribute_name('product_total') %><br />
+                                   <%= Order.human_attribute_name('total') %></th>
+    <th><%= t("manage.orders.index.actions_header") %></th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= order.user ? h(order.user.email) : '' %></td>
+    <td><%= link_to h(order.order_num), manage_order_path(order.id) %><br />
+        (<%= h(order.id) %>)</td>
+    <td><%= h order.placed_at %>&nbsp;<br/>
+        &lt;<%= h order.updated_at.strftime('%Y-%m-%d %H:%M:%S %Z') %>&gt;</td>
+    <td><%= link_to h(order.state), manage_order_path(order.id) %></td>
+    <td><%= h order.empty? %></td>
+    <td class="numeric"><%= h order.currency_code %>&nbsp;<%= h order.product_total %><br />
+                        <%= h order.currency_code %>&nbsp;<%= h order.total %></td>
+    <td>
+      <% if order.can_destroy? %>
+        <%= button_to t('manage.orders.index.destroy_button'), manage_order_path(order), :confirm => t('manage.orders.index.confirm_destroy_msg'), :method => :delete %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+  <hr class="plain"/>
+  <div class="span-4 prepend-1">
+  <% if @order_count > 10 %>
+  <label class="follow_by_select"><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  <% end %>
+  </div>
+  <div class="span-11 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+<% else %>
+  <%= t('application.no_record_found') %>
+<% end %>
+<hr class="plain"/>

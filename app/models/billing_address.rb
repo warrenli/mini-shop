@@ -1,0 +1,2 @@
+class BillingAddress < Address
+end

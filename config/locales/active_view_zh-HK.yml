@@ -1,0 +1,326 @@
+zh-HK:
+  #
+  # Layout_name:
+  #   text:
+  #
+  app:
+    site_title: "Mini Shop"
+    site_subtitle: "Site Subtitle"
+    menu:
+      cart: "購 物 籃"
+      my_account: "我 的 帳 戶"
+      my_order: "我 的 訂 購 單"
+      download: "檔 案 下 載"
+      shopping: "訂 購 商 品"
+      logout: "登 出"
+      logout_confirm: "您 確 定 要 登 出?"
+      manage_products: "商 品"
+      manage_orders: "訂 購 單"
+      admin_users: "管 理 帳 戶"
+      store: "商 店"
+  # Searchlogic labels
+  searchlogic:
+    page_size: "每頁"
+    next: "下一頁 >"
+    prev: "< 上一頁"
+  # authorization plugin
+  authorization:
+    permission_denied_msg: "並未授權，所以無法訪問您要求的網頁!"
+    login_required_msg: "請先登入系統錄!"
+  #
+  # Controller:
+  #   Action/View:
+  #     text:
+  #
+  application:
+    no_record_found: "未有記錄"
+    require_user:
+      warning_msg: "請先登入!"
+    require_no_user:
+      warning_msg: "請先登出!"
+  activations:
+    new:
+      page_title: "啟動我的帳戶"
+      activate_button: "啟動我的帳戶"
+    create:
+      success_msg: "您的帳戶經已啟動!"
+  user_sessions:
+    new:
+      page_title: "登入"
+      login_or_email: "帳戶名稱/電郵"
+      login_button: "登入"
+      or  : "或"
+      signup_link: "登記"
+      forgot_password_link: "忘記密碼"
+    create:
+      success_msg: "成功登入!"
+    destroy:
+      success_msg: "成功登出!"
+  users:
+    new:
+      page_title: "登記"
+      accept_msg: "我 接 納 這 服 務 條 款"
+      register_button: "登記"
+    create:
+      success_msg: "帳戶已成功登記。"
+      need_activation_msg: "帳戶已成功登記。有關帳戶的啟動方法經已用電子郵件通知您，請查閱您的電子郵箱。"
+    show:
+      page_title: "我的帳戶"
+      edit_link: "修改"
+    edit:
+      page_title: "我的帳戶"
+      change_email_link: "改變電郵地址"
+      legend_title: "更改資料"
+      new_password: "新密碼"
+      update_button: "更改密碼"
+      my_account_link: "我的帳戶"
+    update:
+      success_msg: "帳戶已成功更新!"
+  password_resets:
+    load_user_error_msg: "很抱歉，我們無法找到您的帳戶。"
+    new:
+      page_title: "忘記密碼"
+      instruction: "請輸入您的電郵地址，以便將重置密碼的方法寄給您:"
+      email_label: "電郵地址"
+      submit_button: "重置密碼"
+    create:
+      success_msg: "有關重置密碼的方法經已用電子郵件通知您，請查閱您的電子郵箱。"
+      failed_msg: "找不到帳戶使用這個電郵地址 {{your_email}}。"
+    edit:
+      page_title: "更改密碼"
+      update_button: "更改密碼並且登入"
+    update:
+      success_msg: "成功更改密碼!"
+      failed_msg: "未有輸入密碼!"
+  change_email:
+    new:
+      page_title: "改變電郵地址"
+      page_description: "為了確保新電郵地址是有效的，請您提交下面的表格，我們會發送確認郵件到這個電郵地址"
+      submit_button: "發送電子郵件"
+    show:
+      page_title: "確認郵件經已送出"
+      page_description_1: "由於您的要求改變電郵地址，所以我們發送確認郵件到這個新的電郵地址 '{{new_email}}'."
+      page_description_2: "您的電郵地址並未變，直到你點擊確認鏈接的電子郵件"
+    edit:
+      page_title: "確認新的電郵地址"
+      page_description: "您要求將電郵地址更改為："
+      submit_button: "請按鍵確認"
+    update:
+      success_msg: "新的電郵地址已生效"
+  admin:
+    users:
+      common:
+        edit_link: "修改"
+        show_link: "查閱"
+        search_link: "搜尋"
+        destroy_link: "永久刪除"
+        confirm_msg: "真的要執行嗎?"
+        no_permission_msg: "並未授權，所以無法執行您的要求!"
+      index:
+        page_title: "管理帳戶 - 搜尋"
+        legend: "搜尋準則"
+        role_name: "帳戶的職責"
+        match: "並符合以下"
+        all: "- 全部準則 -"
+        any: "- 任何準則 -"
+        fullname_contains: "姓名包含"
+        login_contains: "帳戶名稱包含"
+        email_ends_with: "電郵地址末包含"
+        active: "已啟動?"
+        search_button: "搜尋"
+        new_user_button: "建立新帳戶"
+        found: "尋得"
+        actions_header: "功能"
+      new:
+        page_title: "管理帳戶 - 新帳戶"
+        create_button: "新增"
+      create:
+        success_msg: "帳戶已成功建立!"
+      show:
+        page_title: "管理帳戶 - 查閱"
+      edit:
+        page_title: "管理帳戶 - 修改"
+        add_role: "加入 職責"
+        remove_role: "減去 職責"
+        update_button: "修改"
+        update_role_button: "修改 職責"
+      update:
+        success_msg: '成功修改帳戶資料!'
+      change_role:
+        failure_msg:  "未能執行工作!"
+      destroy:
+        success_msg: "永久刪除帳戶: "
+        failure_msg: "未能永久刪除帳戶 "
+  backoffice_title: "後勤服務"
+  manage:
+    products:
+      common:
+        edit: "修改"
+        show: "查閱"
+        destroy: "永久刪除"
+        search: "搜尋商品"
+        add: "新增"
+        remove: "刪除"
+        remove_it: "&laquo;刪除?&raquo;"
+        new_item_link: "建立新項目"
+        new_product_link: "建立新套裝"
+        create_button: "新增"
+        update_button: "修改"
+        note_msg: "*未生效(或失效)的商品暫不可以出售"
+      index:
+        code_begins_with: "商品編碼 閞首為"
+        page_title: "商品搜尋"
+        legend: "搜尋準則"
+        name_contains: "商品名稱包含"
+        "published?": "生效?"
+        match: "符合以下"
+        all: "- 全部準則 -"
+        any: "- 任何準則 -"
+        search_button: "搜尋"
+        found: "尋得"
+        actions_header: "功能"
+    items:
+      common:
+        parent_item: "從屬於 商品項目 "
+      new:
+        page_title: "商品項目 - 新增"
+      edit:
+        page_title: "商品項目 - 修改"
+      show:
+        page_title: "商品項目 - 查閱"
+      create:
+        success_msg: "商品項目已成功建立"
+      update:
+        success_msg: "成功修改商品項目"
+    packages:
+      common:
+        search_item: "搜尋、並選擇商品項目為套裝組件"
+        no_item_found: "請輸入搜尋資料"
+      new:
+        page_title: "商品套裝 - 新增"
+      edit:
+        page_title: "商品套裝 - 修改"
+      show:
+        page_title: "商品套裝 - 查閱"
+      create:
+        success_msg: "商品套裝已成功建立"
+      update:
+        success_msg: "成功修改商品套裝"
+    orders:
+      index:
+        page_title: "訂購單搜尋"
+        legend: "搜尋準則"
+        order_num_contains: "訂購單編號 包含"
+        user_email_begins_with: "電郵地址 開首為"
+        total_gt: "合計 大於"
+        total_lt: "合計 少於"
+        placed_after: "在這日期之後訂購"
+        placed_before: "在這日期在之前訂購"
+        match: "符合以下"
+        all: "- 全部準則 -"
+        any: "- 任何準則 -"
+        search_button: "搜尋"
+        found: "尋得"
+        "empty?": "空的?"
+        actions_header: "功能"
+        pay_button: "付款!"
+        ship_button: "送出商品!"
+        void_button: "取消!"
+        confirm_void_msg: "您 確 定 要 取 消?"
+        destroy_button: "刪除"
+        confirm_destroy_msg: "您 確 定 要 刪 除?"
+        resend_button: "重申送出訂購單"
+      pay:
+        success_msg: "訂購單已付款"
+        failed_msg: "未能付款給訂購單 "
+      ship:
+        success_msg: "訂購單商品已送出"
+        failed_msg: "未能送出訂購單商品 "
+      void:
+        success_msg: "訂購單已取消"
+        failed_msg: "未能取消訂購單 "
+      destroy:
+        success_msg: "訂購單已刪除"
+        failed_msg: "未能刪除訂購單 "
+  product:
+    pictures: "圖片"
+    downloads: "下載檔"
+    variations: "款式"
+    components: "組件"
+    code: "編碼"
+    name: "名稱"
+    price: "售價"
+    rank: "等級"
+    published: "生效"
+    not_published: "失效"
+    date_available: "生效日期"
+    description: "商品說明"
+    no_picture: "未有圖片"
+    qty: "數量"
+    quantity: "數量"
+  store:
+    index:
+      welcome_msg: "歡迎您"
+    show:
+      add_button: "訂購"
+      package_contains_msg: "這個套裝包含以下項目"
+      payment_method: "付款方法: {{mthd}}"
+    cart:
+      empty_msg:  "您還沒有選購任何商品"
+      title: "購物籃"
+      update_button: "更新數量"
+      empty_button: "取消所有項目"
+      checkout_button: "結帳"
+    update_cart:
+      success_msg: "成功更新購物籃"
+      failed_msg: "未能更新購物籃"
+  orders:
+    common:
+      subtotal: "小計"
+      total: "合計"
+      billing_address: "帳單地址"
+      shipping_address: "收貨地址"
+    index:
+      page_title: "我的訂購單"
+      found: "尋得"
+  checkout:
+    common:
+      shopping_link: "選購商品 >>"
+      failed_msg: "未能執行結帳"
+      payment_not_required_msg: "不需要付款"
+      payment_accept_msg: "訂購單和付款已被接納"
+      payment_need_verification_msg: "訂購單已存檔，但付款需要覆核"
+      payment_need_investigation_msg: "訂購單已存檔，但付款需要進一步覆核"
+    start:
+      page_title: "結帳 - 輸入地址"
+      next_page_button: "下一步 - 付款"
+    update_address:
+      success_msg: "成功更新 帳單地址 / 收貨地址"
+    payment:
+      page_title: "結帳 - 付款"
+      no_payment_msg: "訂購單已被接納, 不需要付款"
+      card_safety_msg: "為保障顧客私隱，我們不會儲存信用卡資料"
+      card_payment: "信用卡付款"
+      card_owner: "持有人"
+      card_type: "信用卡類別"
+      card_number: "信用卡號碼"
+      expiration_date: "失效日期"
+      pay_button: "即時付款"
+      warning_msg: "*注意: 請啟動SSL"
+      or: "或"
+    review:
+      page_title: "結帳 - 確認付款"
+      confirm_message: "收 到 'PayPal' 的 付 款 資 料 ， 待 您 確 認 後 ， 才 可 完 成 結 帳 。"
+      payer: "PayPal 帳戶持有人"
+      email: "電郵地址"
+      amount: "支付金額"
+      confirm_button: "確認付款"
+      order_num_not_match_msg: "訂購單編號不相配 "
+      payer_not_verified_msg: "付款人未能查證 "
+      currency_not_match_msg: "貨幣不相配 "
+      total_amt_not_match_msg: "合計金額不相配 "
+  download:
+    index:
+      page_title: "我的檔案"
+      found: "尋得"
+      product_name: "商品名稱"

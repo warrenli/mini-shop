@@ -1,0 +1,77 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.dynDateTime.min" %>
+<%= javascript_include_tag "lang/calendar-en.min" %>
+<%= stylesheet_link_tag 'datetime/calendar-green.css' %>
+<% end %>
+<%= title t("manage.packages.new.page_title"), :h2 %>
+
+<% form_for([:manage, @package], :html => { :multipart => true } ) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <div class="prepend-15" >
+    <%= f.submit t('manage.products.common.create_button') %>
+  </div>
+<% end %>
+
+<div id="item_search" class="span-11" style="position:absolute; top: 700px;">
+  <div class="width-100">
+  <fieldset>
+  <%= render :partial=> 'search' %>
+  </fieldset>
+  </div>
+</div>
+
+<hr class="plain clear" />
+<%= search_product_link %>
+<% content_for :foot do %>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function($) {
+ $("#package_date_available").dynDateTime({showsTime: true, ifFormat: "%Y-%m-%d %H:%M"});
+
+ $("#add_picture").click(function(e){
+  e.preventDefault();
+  $("#pictures").append('<%= escape_javascript(render(:partial => 'picture_new')) %>');
+ });
+
+ $('a.remove_picture_new').livequery(function(){
+  $(this).click(function(e){
+   e.preventDefault();
+   $(this).parent().remove();
+  });
+ });
+
+ $('a.remove_component_new').livequery(function(){
+  $(this).click(function(e){
+   e.preventDefault();
+   $(this).parent().remove();
+  });
+ });
+
+ $('a.add_component').livequery(function(){
+  $(this).click(function(e){
+   e.preventDefault();
+   var item = $(this).prev();
+   var str =  ['<div class="span-9 component">',
+               '<div class="span-1">',
+               '<input id="package_components_attributes__position" name="package[components_attributes][][position]" size="1" type="text" value="1" />',
+               '</div>'].join('\n') + item.html() + '<a href="#" class="remove_component_new">Remove</a></div>';
+   // alert(str);  // debug
+   $('#components').append(str);
+  });
+ });
+
+  // Change page_links to use ajax
+  $('a.order_by, a.page, a.prev_page, a.next_page').livequery('click', function() {
+    $('#items').load(this.href);
+    return false;
+  })
+
+  // Change our search form to ajax
+  $('#search_form').ajaxForm({target: '#items'});
+})
+</script>
+<% end %>

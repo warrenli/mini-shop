@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+component_one:
+  id: 1
+  package_id: 3
+  item_id: 2
+  position: 1
+
+component_two:
+  id: 2
+  package_id: 3
+  item_id: 4
+  position: 2

@@ -1,0 +1,16 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <td><% unless product_line.product.get_first_picture.nil? %>
+      <%= image_tag product_line.product.get_first_picture.data.url(:tiny) %>
+      <% else %>
+      <div class="middle">No<br />Picture</div>
+      <% end %>
+  </td>
+  <td><%= h product_line.name %>
+  </td>
+  <td class="numeric"><%= h product_line.display_unit_price %>
+  </td>
+  <td class="numeric"><%= h product_line.quantity %>
+  </td>
+  <td class="numeric"><%= h product_line.display_line_total %>
+  </td>
+</tr>

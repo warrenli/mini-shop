@@ -1,0 +1,83 @@
+<%= title t("admin.users.index.page_title"), :h2 %>
+<hr class="plain"/>
+<% form_for [:admin, @search], :html => {:id => "search_form"}, :js_lib => :jquery do |f| %>
+<fieldset>
+  <legend><%= t("admin.users.index.legend")  %></legend>
+  <% f.fields_for @search.conditions do |users| %>
+    <div class="prepend-7 span-10 last">
+    <label class="follow_by_select"><%= t("admin.users.index.role_name") %></label>&nbsp;
+    <%= select_tag "role_name", options_for_select([["-----", ""], ["Is_Site_admin", "site_admin"], ["Is_Admin", "admin"], ["Is_Modulator", "modulator"]] ) %>
+    </div>
+    <div class="prepend-7 span-10 last">
+    <label class="follow_by_select"><%= t("admin.users.index.match") %></label>&nbsp;
+    <%= users.select :any, [ [t("admin.users.index.all"), false], [t("admin.users.index.any"), true] ] %>
+    </div>
+    <div class="span-4 prepend-3">
+    <label><%= t("admin.users.index.fullname_contains") %></label>
+    </div>
+    <div class="span-10 last">
+    <%= users.text_field :fullname_contains, :size => 30 %>
+    </div>
+    <div class="span-4 prepend-3">
+    <label><%= t("admin.users.index.login_contains") %></label>
+    </div>
+    <div class="span-10 last">
+    <%= users.text_field :login_contains, :size => 30 %>
+    </div>
+    <div class="span-4 prepend-3">
+    <label><%= t("admin.users.index.email_ends_with") %></label>
+    </div>
+    <div class="span-10 last">
+    <%= users.text_field :email_ends_with, :size => 30 %>
+    </div>
+    <div class="span-4 prepend-3">
+    <label><%= t("admin.users.index.active") %></label>
+    </div>
+    <div class="span-10 last">
+    <%= users.select :active, [ ["-----", ""], ["true", "1"], ["false", "0"] ] %>
+    </div>
+  <% end %>
+  <div class="prepend-7 span-10 last">
+  <%= submit_tag t("admin.users.index.search_button") %>
+  </div>
+</fieldset>
+<% end %>
+
+<div class="prepend-14 span-3 last"><%= button_to t("admin.users.index.new_user_button"), new_admin_user_url,:method => :get %></div>
+
+<div id="users">
+  <%= render :partial => "users" %>
+</div>
+<% content_for :foot do %>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function($) {
+  // Change per_page_select to use ajax
+  $('select.per_page').livequery(function() {
+    var onchange = $(this).attr('onchange').toString();
+    var matches = onchange.match(/window\.location = "(.*)" \+ this/);
+    var url
+    if (matches) {
+      url = matches[matches.length - 1];
+      $(this).attr('onchange', null)
+      $(this).change(function() {
+        $('#users').load(url + $(this).val());
+        return false;
+      })
+    }
+  })
+
+  // Change page_links to use ajax
+  $('a.order_by, a.page, a.prev_page, a.next_page').livequery('click', function() {
+    $('#users').load(this.href);
+    return false;
+  })
+
+  // Change our search form to ajax
+  $('#search_form').ajaxForm({target: '#users'});
+})
+</script>
+<% end %>

@@ -1,0 +1,9 @@
+<%= title t("admin.users.show.page_title"), :h2 %>
+<hr class="plain"/>
+
+<%= render :partial => "a_user" %>
+
+<%= link_to t("admin.users.common.edit_link"), edit_admin_user_path(@user) %> |
+<%= link_to t("admin.users.common.search_link"), admin_users_path %> |
+<%= link_to t("admin.users.common.destroy_link"), admin_user_path(@user), :confirm => t("admin.users.common.confirm_msg"), :method => :delete %>
+<hr class="plain"/>

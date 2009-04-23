@@ -1,0 +1,12 @@
+<%= title t("admin.users.new.page_title"), :h2 %>
+<hr class="plain"/>
+<% form_for([:admin, @user]) do |f| %>
+<%= f.error_messages %>
+<%= render :partial => "form", :object => f %>
+<div class="prepend-6 span-12 last">
+<%= f.submit t("admin.users.new.create_button") %>
+</div>
+<% end %>
+<hr class="plain"/>
+<%= link_to t("admin.users.common.search_link"), admin_users_path %>
+<hr class="plain"/>

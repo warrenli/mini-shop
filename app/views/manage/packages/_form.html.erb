@@ -1,0 +1,74 @@
+<div class="span-22 last">
+  <div class="span-3">
+  <%= form.label :code %><br />
+  <%= form.text_field :code, :size => 10 %>
+  </div>
+  <div class="span-6">
+  <%= form.label :name %><br />
+  <%= form.text_field :name, :size=> 25 %>
+  </div>
+  <div class="span-4">
+  <%= form.label :price %><br />
+  <% # = form.select :currency_code, ['HKD'] %>
+  <%= form.text_field :currency_code, :readonly => true, :size => 3 %>
+  <%= form.text_field :price, :style=> "direction: rtl;", :size => 6 %>
+  </div>
+  <div class="span-2">
+  <%= form.label :rank %><br />
+  <%= form.text_field :rank, :style=> "direction: rtl;", :size => 1 %>
+  </div>
+  <div class="span-2">
+  <%= form.label :is_published %><br />
+  <%= form.check_box :is_published %>
+  </div>
+  <div class="span-4">
+  <%= form.label :date_available %><br />
+  <% # = form.datetime_select :date_available %>
+  <%= form.text_field :date_available, :size => 16 %><br />
+  <% unless form.object.new_record? %>
+    <%= form.object.date_available.to_s %>
+  <% end %>
+  </div>
+</div>
+<p style="float:right"><b><%= t('manage.products.common.note_msg') %></b><p>
+<hr class="plain clear" />
+
+<div class="span-11">
+  <div id="product_description" class="left width-100">
+  <%= form.label :description %><br />
+  <%= form.text_area :description %>
+  </div>
+</div>
+
+<div class="span-11 last">
+  <fieldset>
+  <div id="pictures" class="width-100">
+  <h4><%= t('product.pictures') %></h4>
+  <%= render :partial=> 'picture', :collection=> @package.pictures %>
+  </div>
+  <hr class="plain" />
+  <div class="left">
+  <a href="#" id="add_picture"><%= t('manage.products.common.add') %></a>
+  </div>
+  </fieldset>
+</div>
+
+<hr class="plain clear" />
+
+<div class="span-11">
+  <div class="width-100" style="min-height:500px;">
+  &nbsp;
+  </div>
+</div>
+
+<div class="span-11 last">
+  <fieldset>
+  <div id="components" class="width-100">
+  <h4><%= t('product.components') %></h4>
+  <%= render :partial=> 'component', :collection=> @package.components %>
+  </div>
+  </fieldset>
+</div>
+
+<hr class="plain clear" />
+

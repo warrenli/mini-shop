@@ -1,0 +1,2 @@
+module Manage::PackagesHelper
+end

@@ -1,0 +1,112 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.lightbox-0.5.min" %>
+<%= stylesheet_link_tag 'jquery.lightbox-0.5' %>
+<% end %>
+<%= title t("manage.items.show.page_title"), :h2 %>
+
+<% if @item.variation? %>
+  <h3>
+  <%= t('manage.items.common.parent_item') %>: <%= h @item.parent_item.name %> [<%= h @item.parent_item.code %>] &larr;
+  <%= show_product_link(@item.parent_item) %>
+  </h3>
+<% end %>
+
+<div class="span-22 last">
+  <%= render :partial => "manage/products/product", :object => @item %>
+</div>
+<p style="float:right"><b><%= t('manage.products.common.note_msg') %></b><p>
+<hr class="plain clear" />
+
+<div class="span-11">
+  <% if @item.variation? %>
+
+  <fieldset>
+  <div class="left width-100">
+  <h4><%= t('manage.items.common.parent_item')%></h4>
+  <%=h @item.parent_item.description %>
+  </div>
+  </fieldset>
+
+  <fieldset>
+  <div class="left width-100">
+  <h4><%= t('product.pictures') %></h4>
+  <% @item.parent_item.pictures.each do |picture| %>
+    <a href="<%= picture.data.url(:large) %>" rel="lightbox[' + product.code + ']' %>"><%= image_tag(picture.data.url(:thumb)) %></a>
+  <% end %>
+  </div>
+  </fieldset>
+
+  <% else %>
+
+  <fieldset>
+  <div class="left width-100">
+  <h4><%= t('product.description') %></h4>
+  <%=h @item.description %>
+  </div>
+  </fieldset>
+
+  <fieldset>
+  <div class="left width-100">
+  <h4><%= t('product.pictures') %></h4>
+  <% @item.pictures.each do |picture| %>
+    <a href="<%= picture.data.url(:large) %>" rel="lightbox[' + product.code + ']' %>"><%= image_tag(picture.data.url(:thumb)) %></a>
+  <% end %>
+  </div>
+  </fieldset>
+
+  <% end %>
+</div>
+
+<div class="span-11 last">
+  <% unless @item.variation? %>
+  <fieldset>
+  <h4><%= t('product.variations') %></h4>
+  <% @item.variations.each do |subitem| %>
+    <div class="left width-100">
+      <%= render :partial => "manage/products/product", :object => subitem %>
+    </div>
+    <div class="left width-100">
+    <%= show_product_link(subitem) %> | <%= edit_product_link(subitem) %>
+    </div>
+    <% unless subitem.downloads.empty? %>
+    <div class="left width-100">
+      <fieldset>
+      <b><%= t('product.downloads') %></b>
+      <% subitem.downloads.each do |download| %>
+        <br/>&bull;&nbsp;<%= h download.data_file_name %>
+      <% end %>
+      </fieldset>
+    </div>
+    <% end %>
+    <hr class="plain" />
+  <% end %>
+  </fieldset>
+  <% end%>
+
+  <% unless @item.downloads.empty? %>
+  <fieldset>
+  <h4><%= t('product.downloads') %></h4>
+  <ul class="left width-100">
+  <% @item.downloads.each do |download| %>
+    <li><%= h download.data_file_name %></li>
+  <% end %>
+  </ul>
+  </fieldset>
+  <% end %>
+</div>
+
+<hr class="plain clear" />
+
+<%= edit_product_link(@item) %> |
+<%= destroy_product_link(@item) %> |
+<%= search_product_link %>
+
+<% content_for :foot do %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("a[rel^='lightbox']").livequery(function(){
+    $("a[rel^='lightbox']").lightBox({fixedNavigation:true});
+  });
+});
+</script>
+<% end %>

@@ -1,0 +1,53 @@
+<% fields_for "package[components_attributes][]", component do |f| %>
+<% unless f.object.new_record? %>
+  <% item = f.object.item %>
+<div class="span-9 component">
+  <div class="span-1">
+  <%= f.text_field :position, :index => nil, :size => 1 %>
+  </div>
+  <% picture = item.get_first_picture %>
+  <% if picture %>
+  <div class="span-2">
+    <%= image_tag picture.data.url(:tiny) if picture %>
+  </div>
+  <% else %>
+  <div class="span-2" style="border: solid 1px red; height: 60px;">
+    <b><%= t('product.no_picture') %></b>
+  </div>
+  <% end %>
+  <div class="span-5">
+  <%= item.code %> <%= item.display_name %> (ID: <%= f.object.id %>/<%=item.id%>)
+  </div>
+  <div class="span-1">
+  <% unless item.is_published %>
+    <b><%= t('product.not_published') %></b>
+  <% end %>
+  </div>
+  <div class="prepend-3 span-6">
+  <%= f.label :_delete, t('manage.products.common.remove_it'), :index => nil %>
+  <%= f.check_box :_delete, :index => nil %> 
+  <%= f.hidden_field :id, :index => nil %>
+  <%= f.hidden_field :item_id, :index => nil %>
+  </div>
+</div>
+<% else %>
+<%# This section is for testing purpose %>
+<div class="span-9 component">
+  <div class="span-1">
+  <input id="package_components_attributes__position" name="package[components_attributes][][position]" size="1" type="text" value="1" />
+  </div>
+  <div class="span-2">
+    <img alt="Tiny_gtd_1280" src="/pictures/datas/6/tiny_GTD_1280.jpg?1237257252" />
+  </div>
+  <div class="span-5">
+  M002&nbsp;Item M002 (ID: 3)
+  </div>
+  <div class="left">
+  <input id="package_components_attributes__item_id" name="package[components_attributes][][item_id]" value="3" type="hidden" />
+  </div>
+  <% # = f.text_field :item_id, :size => 5 %>
+  <a href="#" class="remove_component_new"><%= t('manage.products.common.remove') %></a>
+</div>
+<% end %>
+<% end %>
+

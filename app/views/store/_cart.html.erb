@@ -1,0 +1,49 @@
+<% if cart.order_product_lines.empty? %>
+  <h2><%= t('store.cart.empty_msg') %></h2>
+<% else %>
+  <h2><%= t('store.cart.title') %></h2>
+  <div class="contain_list">
+  <table class="list">
+  <tr>
+    <th><%= Product.human_name %></th>
+    <th><%= OrderLine.human_attribute_name('name') %></th>
+    <th class="middle" width="100"><%= OrderLine.human_attribute_name('price') %></th>
+    <th class="middle" width="50"><%= t('product.qty') %></th>
+    <th class="middle" width="100"><%= t('orders.common.subtotal') %></th>
+  </tr>
+  <% form_for :cart, :url => { :action => "update_cart" }, :html => {:id => "cart_form"} do |f| %>
+
+  <%= render :partial => "cart_line", :collection => cart.order_product_lines %>
+
+  <tr>
+    <td><%= number_to_currency(cart.fetch_subtotal) %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="numeric"><%= t('orders.common.total') %></td>
+    <td class="numeric"><%= cart.display_product_total %></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td class="middle">
+      <%= f.submit t('store.cart.update_button') %>
+      <% end %><!-- end form -->
+    </td>
+    <td class="middle">
+      <%= button_to t('store.cart.empty_button'), :action => "empty_cart" %>
+    </td>
+    <td>&nbsp;</td>
+    <td class="middle">
+      <%= button_to t('store.cart.checkout_button'), :controller => 'checkout', :action => 'start' %>
+    </div>
+    </td>
+  </tr>
+
+  <tr>
+   <td colspan="3">&nbsp;</td>
+   <td colspan="2"><img src="https://www.paypalobjects.com/en_US/i/bnr/bnr_nowAccepting_150x40.gif"/></td>
+  </tr>
+  </table>
+
+  </div>
+<% end %>

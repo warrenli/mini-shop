@@ -1,0 +1,70 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.dynDateTime.min" %>
+<%= javascript_include_tag "lang/calendar-en.min" %>
+<%= stylesheet_link_tag 'datetime/calendar-green.css' %>
+<% end %>
+<%= title t("manage.items.edit.page_title"), :h2 %>
+
+<% if @item.variation? %>
+  <h3>
+  <%= t('manage.items.common.parent_item') %>: <%= h @item.parent_item.name %> [<%= h @item.parent_item.code %>] &larr;
+  <%= edit_product_link(@item.parent_item) %>
+  </h3>
+<% end %>
+
+<hr class="plain clear" />
+
+<% form_for([:manage, @item], :html => { :multipart => true } ) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <div class="prepend-15" >
+    <%= f.submit t('manage.products.common.update_button') %>
+  </div>
+<% end %>
+<hr class="plain clear" />
+<%= show_product_link(@item) %> |
+<%= destroy_product_link(@item) %> |
+<%= search_product_link %>
+<% content_for :foot do %>
+<script type="text/javascript">
+$(document).ready(function($) {
+ $("#item_date_available").dynDateTime({showsTime: true, ifFormat: "%Y-%m-%d %H:%M"});
+
+ $("#add_picture").click(function(e){
+  e.preventDefault();
+  $("#pictures").append('<%= escape_javascript(render(:partial => 'picture_new')) %>');
+ });
+
+ $('a.remove_picture_new').livequery(function(){
+  $(this).click(function(e){
+   e.preventDefault();
+   $(this).parent().remove();
+  });
+ });
+
+ $("#add_variation").click(function(e){
+  e.preventDefault();
+  $("#variations").append('<%= escape_javascript(render(:partial => 'variation_new')) %>');
+ });
+
+ $('a.remove_variation_new').livequery(function(){
+  $(this).click(function(e){
+   e.preventDefault();
+   $(this).parent().parent().remove();
+  });
+ });
+
+ $("#add_download").click(function(e){
+  e.preventDefault();
+  $("#downloads").append('<%= escape_javascript(render(:partial => 'download_new')) %>');
+ });
+
+ $('a.remove_download_new').livequery(function(){
+  $(this).click(function(e){
+   e.preventDefault();
+   $(this).parent().remove();
+   });
+ });
+})
+</script>
+<% end %>

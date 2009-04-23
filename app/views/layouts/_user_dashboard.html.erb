@@ -1,0 +1,25 @@
+<div class="prepend-4 span-16 append-4 last">
+  <div id="navcontainer">
+  <ul id="navlist">
+    <li><%= link_to t('app.menu.my_account'), edit_account_path %></li>
+    <li><%= link_to t('app.menu.my_order'), :controller => 'orders', :action => 'index' %></li>
+    <li><%= link_to t('app.menu.download'), :controller => 'downloads', :action => 'index' %></li>
+    <li><%= link_to t('app.menu.shopping'), root_path %></li>
+    <li><%= link_to t('app.menu.logout'), user_session_path, :method => :delete, :confirm => t('app.menu.logout_confirm') %></li>
+  </ul>
+  </div>
+</div>
+
+<!-- Left column here -->
+<div id="left_column" class="span-1">&nbsp;</div>
+
+<!-- Middle column here -->
+<div id="middle_column" class="span-22">
+<hr class="plain" />
+<%= flash_messages %>
+<%= yield :layout %>
+</div>
+
+<!-- Left column here -->
+<div id="right_column" class="span-1 last">&nbsp;</div>
+

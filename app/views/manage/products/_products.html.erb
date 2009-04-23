@@ -1,0 +1,59 @@
+<% if @product_count > 0 %>
+  <div class="span-21 prepend-1 last">
+  <b><%= t("manage.products.index.found") + " " + @product_count.to_s %>
+  <%= t("activerecord.models.product", :count => @product_count) %></b>
+  </div>
+  <div class="span-4 prepend-1">
+  <% if @product_count > 10 %>
+  <label class="follow_by_select"><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  <% end %>
+  </div>
+  <div class="span-17 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+  <hr class="plain"/>
+  <table class="list">
+  <tr>
+    <th><%= order_by_link :code, :text => Product.human_attribute_name('code') %></th>
+    <th><%= order_by_link :name, :text => Product.human_attribute_name('name') %></th>
+    <th><%= order_by_link :price, :text => Product.human_attribute_name('price') %></th>
+    <th><%= order_by_link :rank, :text => Product.human_attribute_name('rank') %></th>
+    <th><%= Product.human_attribute_name('type')%></th>
+    <th><%= Product.human_attribute_name('is_published')%></th>
+    <th><%= Product.human_attribute_name('date_available')%></th>
+    <th><%= t("manage.products.index.actions_header") %></th>
+
+  </tr>
+  <% @products.each do |product| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h product.code %></td>
+    <td width="300"><%=h product.display_name %></td>
+    <td nowrap><%=h product.display_price %></td>
+    <td><%=h product.rank %></td>
+    <td><%=h product.product_type %></td>
+    <td><%=h product.is_published %></td>
+    <td nowrap><%=h product.date_available %></td>
+    <td nowrap><%= show_product_link(product) %> | <%= edit_product_link(product) %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+  <hr class="plain"/>
+  <div class="span-4 prepend-1">
+  <% if @product_count > 10 %>
+  <label class="follow_by_select"><%= t("searchlogic.page_size") %></label>&nbsp;
+  <%= per_page_select %>
+  <% end %>
+  </div>
+  <div class="span-11 last pages">
+  <% if @search.page_count > 1 %>
+    <p class="page_links"><%= page_links %></p>
+  <% end %>
+  </div>
+<% else %>
+  <%= t('application.no_record_found') %>
+<% end %>
+<hr class="plain"/>

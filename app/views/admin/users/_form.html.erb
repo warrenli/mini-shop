@@ -1,0 +1,42 @@
+<div class="span-4 prepend-2">
+<%= form.label :fullname %>
+</div>
+<div class="span-12 last">
+<%= form.text_field :fullname %>
+</div>
+<div class="span-4 prepend-2">
+<%= form.label :login %>
+</div>
+<div class="span-12 last">
+<%= form.text_field :login %>
+</div>
+<div class="span-4 prepend-2">
+<%= form.label :email %>
+</div>
+<div class="span-12 last">
+<%= form.text_field :email %>
+</div>
+<div class="span-4 prepend-2">
+<%= form.label :password, form.object.new_record? ? nil : t('users.edit.new_password') %>
+</div>
+<div class="span-12 last">
+<%= form.password_field :password %>
+</div>
+<div class="span-4 prepend-2">
+<%= form.label :password_confirmation %>
+</div>
+<div class="span-12 last">
+<%= form.password_field :password_confirmation %>
+</div>
+<div class="span-4 prepend-2">
+<%= form.label :time_zone %>
+</div>
+<div class="span-12 last">
+<%= form.time_zone_select :time_zone, [ ActiveSupport::TimeZone.new('Hong Kong') ] %>
+</div>
+<div class="span-4 prepend-2">
+<%= form.label :active %>
+</div>
+<div class="span-12 last">
+<%= form.check_box :active %>
+</div>

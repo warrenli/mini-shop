@@ -1,0 +1,123 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.dynDateTime.min" %>
+<%= javascript_include_tag "lang/calendar-en.min" %>
+<%= stylesheet_link_tag 'datetime/calendar-green.css' %>
+<% end %>
+<%= title t("manage.orders.index.page_title"), :h2 %>
+<hr class="plain"/>
+<% form_for [:manage, @search], :html => {:id => "search_form"} do |f| %>
+<fieldset>
+  <legend><%= t("manage.orders.index.legend")  %></legend>
+  <% f.fields_for @search.conditions do |orders| %>
+    <div class="prepend-5 span-16 last">
+    <label class="follow_by_select"><%= t("manage.orders.index.match") %></label>&nbsp;
+    <%= orders.select :any, [ [t("manage.orders.index.all"), false], [t("manage.orders.index.any"), true] ] %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= t("manage.orders.index.order_num_contains") %></label>
+    </div>
+    <div class="span-5">
+    <%= orders.text_field :order_num_contains, :size => 22 %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= t("manage.orders.index.user_email_begins_with") %></label>
+    </div>
+    <div class="span-6 last">&nbsp;
+    <% orders.fields_for orders.object.user do |user| %>
+      <%= user.text_field :email_begins_with, :size => 22 %>
+    <% end %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= t("manage.orders.index.total_gt") %></label>
+    </div>
+    <div class="span-5">
+    <%= orders.text_field :total_gt, :size => 8, :class =>'numeric' %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= t("manage.orders.index.placed_after") %></label>
+    </div>
+    <div class="span-5 last">
+    <%= orders.text_field :placed_at_after, :size => 12 %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= t("manage.orders.index.total_lt") %></label>
+    </div>
+    <div class="span-5">
+    <%= orders.text_field :total_lt, :size => 8, :class =>'numeric' %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= t("manage.orders.index.placed_before") %></label>
+    </div>
+    <div class="span-5 last">
+    <%= orders.text_field :placed_at_before, :size => 12 %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= Order.human_attribute_name('state') %></label>
+    </div>
+    <div class="span-5">
+    <%= orders.select :state, %w(initialized assigned pending paid shipped).map { |state| [state, state] }, { :include_blank => true } %>
+    </div>
+
+    <div class="span-4 prepend-1">
+    <label><%= Order.human_attribute_name('has_checked_out') %></label>
+    </div>
+    <div class="span-5 last">
+    <%= orders.select :has_checked_out, [ ["-----", ""], ["true", "1"], ["false", "0"] ] %>
+    </div>
+
+  <% end %>
+  <div class="prepend-8 span-13 last">
+  <%= submit_tag t("manage.orders.index.search_button") %>
+  </div>
+</fieldset>
+<% end %>
+
+<hr class="plain"/>
+
+<div id="orders">
+  <%= render :partial => "orders" %>
+</div>
+
+<% content_for :foot do %>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function($) {
+  $("#search_conditions_placed_at_after").dynDateTime({showsTime: false, ifFormat: "%Y-%m-%d"});
+  $("#search_conditions_placed_at_before").dynDateTime({showsTime: false, ifFormat: "%Y-%m-%d"});
+
+  // Change per_page_select to use ajax
+  $('select.per_page').livequery(function() {
+    var onchange = $(this).attr('onchange').toString();
+    var matches = onchange.match(/window\.location = "(.*)" \+ this/);
+    var url
+    if (matches) {
+      url = matches[matches.length - 1];
+      $(this).attr('onchange', null)
+      $(this).change(function() {
+        $('#orders').load(url + $(this).val());
+        return false;
+      })
+    }
+  })
+
+  // Change page_links to use ajax
+  $('a.order_by, a.page, a.prev_page, a.next_page').livequery('click', function() {
+    $('#orders').load(this.href);
+    return false;
+  })
+
+  // Change our search form to ajax
+  $('#search_form').ajaxForm({target: '#orders'});
+})
+</script>
+<% end %>

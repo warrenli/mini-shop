@@ -1,0 +1,26 @@
+<% fields_for "package[pictures_attributes][]", picture do |f| %>
+<% unless f.object.new_record? %>
+<div class="span-9 picture">
+  <div class="left top25">
+  <%= f.text_field :position, :index => nil, :size => 1 %>
+  </div>
+  <div class="left">
+  <%= image_tag f.object.data.url(:tiny) %>
+  </div>
+  <div class="left top25">
+  <%= f.label :_delete, t('manage.products.common.remove_it'), :index => nil %>
+  <%= f.check_box :_delete, :index => nil %> 
+  <%= f.hidden_field :id, :index => nil %>(ID: <%= f.object.id %>)
+  </div>
+</div>
+<% else %>
+<div class="span-9 picture">
+  <div class="left">
+  <%= f.text_field :position, :size => 1 %>
+  </div>
+  <%= f.file_field :data, :size => 22 %>
+  <a href="#" class="remove_picture_new"><%= t('manage.products.common.remove') %></a>
+</div>
+<% end %>
+<% end %>
+

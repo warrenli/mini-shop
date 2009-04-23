@@ -1,0 +1,183 @@
+<%= title Order.human_attribute_name('order_num') +" "+ h(@order.order_num), :h2 %>
+
+<p>
+ <b><%= Order.human_attribute_name('placed_at') %>:</b> <%= h @order.placed_at.to_s %>&nbsp;&nbsp;
+ <b><%= Order.human_attribute_name('state') %>:</b> <%= h @order.state %>&nbsp;&nbsp;
+ <% if @order.user %>
+ <b><%= User.human_name %>:</b> <%= h @order.user.full_description %>
+ <% end %>
+ <br />
+ <b>Token:</b> <%= h @order.token %>&nbsp;&nbsp;
+ <b><%= Order.human_attribute_name('recipient') %>:</b> <%= h @order.recipient %>
+ <br />
+ <b>ID:</b> <%= h @order.id %>&nbsp;&nbsp;
+ <b><%= Order.human_attribute_name('created_at') %>:</b> <%= h @order.created_at.to_s %>&nbsp;&nbsp;
+ <b><%= Order.human_attribute_name('updated_at') %>:</b> <%= h @order.updated_at.to_s %>
+</p>
+<div class="prepend-1 span-20 append-1 last">
+<% unless @order.billing_address.blank? %>
+<div style="float:left;">
+<b><%= t('orders.common.billing_address') %></b><br />
+<%= render :partial => 'orders/address', :object => @order.billing_address %>
+</div>
+<% end %>
+
+<% unless @order.shipping_address.blank? %>
+<div style="float:right;">
+<b><%= t('orders.common.shipping_address') %></b><br />
+<%= render :partial => 'orders/address', :object => @order.shipping_address %>
+</div>
+<% end %>
+</div>
+<hr class="plain"/>
+<%= render :partial => 'orders/order', :object => @order%>
+
+<div class="prepend-1 span-10" >
+ <b><%= h @order.note %></b><br /><br />
+ <div class="left">
+  <% if @order.completed_payment %>
+  <%= t('store.show.payment_method', :mthd => @order.completed_payment.method_type) %>
+  <% end %>
+ </div>
+ <div class="left">
+  <% if @order.can_pay? %>
+   <%= button_to t('manage.orders.index.pay_button'), pay_manage_order_path(@order), :method => :put %>
+  <% else %>&nbsp;
+  <% end %>
+ </div>
+ <div class="left">
+  <% if @order.can_ship? %>
+   <%= button_to t('manage.orders.index.ship_button'), ship_manage_order_path(@order), :method => :put %>
+  <% else %>&nbsp;
+  <% end %>
+ </div>
+ <div class="left">
+  <% if @order.can_void? %>
+   <%= button_to t('manage.orders.index.void_button'), void_manage_order_path(@order), :confirm => t('manage.orders.index.confirm_void_msg'), :method => :put %>
+  <% end %>
+ </div>
+ <div class="left">
+  <% if @order.can_destroy? %>
+   <%= button_to t('manage.orders.index.destroy_button'), manage_order_path(@order), :confirm => t('manage.orders.index.confirm_destroy_msg'), :method => :delete %>
+  <% end %>
+ </div>
+ <div class="left">
+  <% if ["pending","paid","shipped"].include?(@order.state) %>
+   <%= button_to t('manage.orders.index.resend_button'), resend_receipt_manage_order_path(@order), :method => :put %>
+  <% end %>
+ </div>
+</div>
+
+<div class="span-10 last" >
+ <% unless @order.download_links.blank? %>
+  <b><%= Download.human_name %></b><br />
+  <% @order.download_links.each do |link| %>
+   <%= link.download.data_file_name %><br />
+  <% end %>
+ <% end %>
+</div>
+
+<hr class="plain"/>
+
+<% if @payment %>
+<hr class="plain"/>
+<h2>PayPal processing parameters in detail</h2>
+<div class="prepend-1 span-21 last">
+ <div class="left">
+   <b>TOKEN :</b><br /><%= @payment.token %>
+ </div>
+ <div class="left">
+   <b>STATE :</b><br /><%= @payment.state %>
+ </div>
+ <div class="left">
+   <b>Method-TYPE :</b><br /><%= @payment.method_type %>
+ </div>
+ <div class="left">
+   <b>TXN ID :</b><br /><%= @payment.txn_id %>
+ </div>
+</div>
+
+<hr class="plain"/>
+
+<div class="prepend-1 span-10">
+<% if @payment.set_ec_request_params -%>
+<h3>SetExpressCheckoutRequest</h3>
+  <% for k, v in @payment.set_ec_request_params.sort -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<div class="span-11 last">
+<% if @payment.set_ec_response_params -%>
+<h3>SetExpressCheckoutResponse</h3>
+  <% for k, v in @payment.set_ec_response_params.sort -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<hr class="plain"/>
+
+<div class="prepend-1 span-10">
+<% if @payment.get_ec_request_params -%>
+<h3>GetExpressCheckoutRequest</h3>
+  <% for k, v in @payment.get_ec_request_params -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<div class="span-11 last">
+<% if @payment.get_ec_response_params -%>
+<h3>GetExpressCheckoutResponse</h3>
+  <% for k, v in @payment.get_ec_response_params.sort -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<hr class="plain"/>
+
+<div class="prepend-1 span-10">
+<% if @payment.do_ec_request_params -%>
+<h3>DoExpressCheckoutRequest</h3>
+  <% for k, v in @payment.do_ec_request_params -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<div class="span-11 last">
+<% if @payment.do_ec_response_params -%>
+<h3>DoExpressCheckoutResponse</h3>
+  <% for k, v in @payment.do_ec_response_params.sort -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<hr class="plain"/>
+
+<div class="prepend-1 span-10">
+<% if @payment.do_dp_request_params -%>
+<h3>DoDirectPaymentRequest</h3>
+  <% for k, v in @payment.do_dp_request_params.sort -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+<div class="span-11 last">
+<% if @payment.do_dp_response_params -%>
+<h3>DoDirectPaymentResponse</h3>
+  <% for k, v in @payment.do_dp_response_params.sort -%>
+  <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+  <% end -%>
+<% end -%>
+</div>
+
+
+<hr class="plain"/>
+<% end %>
+

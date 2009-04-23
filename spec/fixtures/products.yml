@@ -1,0 +1,66 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+item_one:
+  id: 1
+  type: Item
+  code: "M001"
+  name: "Item one"
+  currency_code: HKD
+  price: 1.00
+  rank: 1
+  is_published: 1
+  date_available: <%= 1.days.ago.to_s :db %>
+  position: 1
+  description: "This is item one"
+  count_of_variations: 2
+
+item_two:
+  id: 2
+  type: Item
+  code: "M002"
+  name: "Item two"
+  currency_code: HKD
+  price: 2.00
+  rank: 1
+  is_published: 0
+  position: 1
+  description: "This is item two"
+
+package_one:
+  id: 3
+  type: Package
+  code: "P001"
+  name: "Package one"
+  currency_code: HKD
+  price: 9.99
+  rank: 1
+  is_published: 1
+  date_available: <%= 1.days.ago.to_s :db %>
+  position: 1
+  description: "This is package one"
+
+item_one_var1:
+  id: 4
+  type: Item
+  code: "M001-01"
+  name: "Variation one"
+  currency_code: HKD
+  price: 1.01
+  rank: 1
+  is_published: 1
+  position: 1
+  parent_id: 1
+  description: "Variation one of item one"
+
+item_one_var2:
+  id: 5
+  type: Item
+  code: "M001-02"
+  name: "Variation two"
+  currency_code: HKD
+  price: 1.02
+  rank: 1
+  is_published: 1
+  position: 2
+  parent_id: 1
+  description: "Variation two of item one"

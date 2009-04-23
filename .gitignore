@@ -1,0 +1,12 @@
+*.sqlite3
+.DS_Store
+asset/*
+config/database.yml
+coverage/*
+db/schema.rb
+doc/*
+log/*.log
+public/pictures/*
+public/cache/*
+tmp/**/*
+

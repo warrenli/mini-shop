@@ -1,0 +1,14 @@
+order_product_line_one:
+  id:
+  order_id: 1
+  type: "OrderProductLine"
+  print_sequence: 1
+  code: "M001"
+  name: "Item one"
+  description: "Some Product"
+  price: 9.99
+  quantity: 1
+  product_id: 1
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>
+

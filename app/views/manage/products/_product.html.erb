@@ -1,0 +1,32 @@
+<% if product.product_type == Product::VARIATION %>
+<div class="span-1">
+  <br />
+  <%=h product.position %>
+</div>
+<% end %>
+<div class="span-2">
+  <b><%= t('product.code') %></b><br />
+  <%=h product.code %>
+</div>
+<div class="span-6">
+  <b><%= t('product.name') %></b><br />
+  <%=h product.display_name %>
+</div>
+<div class="span-4">
+  <b><%= t('product.price') %></b><br />
+  <%=h product.display_price %>
+</div>
+<div class="span-2">
+  <b><%= t('product.rank') %></b><br />
+  <%=h product.rank %>
+</div>
+<div class="span-3">
+  <b><%= t('product.published') %></b><br />
+  <%=h product.is_published %>
+</div>
+<% unless product.product_type == Product::VARIATION %>
+<div class="span-4">
+  <b><%= t('product.date_available') %></b><br />
+  <%=h product.date_available %>
+</div>
+<% end %>

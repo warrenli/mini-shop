@@ -1,0 +1,326 @@
+en-US:
+  #
+  # Layout_name:
+  #   text:
+  #
+  app:
+    site_title: "Mini Shop"
+    site_subtitle: "Site Subtitle"
+    menu:
+      cart: "Cart"
+      my_account: "My Account"
+      my_order: "My Orders"
+      download: "My Dowloads"
+      shopping: "Shopping"
+      logout: "Logout"
+      logout_confirm: "Are you sure you want to logout?"
+      manage_products: "Products"
+      manage_orders: "Orders"
+      admin_users: "Users"
+      store: "Store"
+  # Searchlogic labels
+  searchlogic:
+    page_size: "Per page"
+    next: "Next >"
+    prev: "< Prev"
+  # authorization plugin
+  authorization:
+    permission_denied_msg: "Permission denied. You cannot access the requested page."
+    login_required_msg: "Login is required to access the requested page."
+  #
+  # Controller:
+  #   Action/View:
+  #     text:
+  #
+  application:
+    no_record_found: "No record found"
+    require_user:
+      warning_msg: "You must be logged in to access this page"
+    require_no_user:
+      warning_msg: "You must be logged out to access this page"
+  activations:
+    new:
+      page_title: "Activate My Account"
+      activate_button: "Activate my account"
+    create:
+      success_msg: "Your account has been activated."
+  user_sessions:
+    new:
+      page_title: "Login"
+      login_or_email: "Login/Email"
+      login_button: "Login"
+      or  : "or"
+      signup_link: "Sign Up"
+      forgot_password_link: "Forgot password"
+    create:
+      success_msg: "Login successful!"
+    destroy:
+      success_msg: "Logout successful!"
+  users:
+    new:
+      page_title: "Register"
+      accept_msg: "I accept the terms of service"
+      register_button: "Register"
+    create:
+      success_msg: "Your account has been created!"
+      need_activation_msg: "Your account has been created. Please check your e-mail for your account activation instructions!"
+    show:
+      page_title: "My Account"
+      edit_link: "Edit"
+    edit:
+      page_title: "My Account"
+      change_email_link: "Change"
+      legend_title: "Change My Account"
+      new_password: "New Password"
+      update_button: "Update"
+      my_account_link: "My Account"
+    update:
+      success_msg: "Account updated!"
+  password_resets:
+    load_user_error_msg: "We're sorry, but we could not locate your account."
+    new:
+      page_title: "Forgot Password"
+      instruction: "Fill out the form below and instructions to reset your password will be emailed to you:"
+      email_label: "Email"
+      submit_button: "Reset my password"
+    create:
+      success_msg: "Instructions to reset your password have been emailed to you. Please check your email."
+      failed_msg: "No user was found with that email address {{your_email}}"
+    edit:
+      page_title: "Change My Password"
+      update_button: "Update my password and log me in"
+    update:
+      success_msg: "Password successfully updated"
+      failed_msg: "Password missing"
+  change_email:
+    new:
+      page_title: "Change Email Request"
+      page_description: "To make sure your new e-mail address is valid, we'll send a verification message to this email address once you submit the form below."
+      submit_button: "Send Request"
+    show:
+      page_title: "Change Email Request Sent"
+      page_description_1: "You've requested to change the e-mail address associated with your account. Your email must always be a real, valid address, so we just sent a verification e-mail to '{{new_email}}'."
+      page_description_2: "Your e-mail address won't be officially changed until you click on the confirmation link in the e-mail"
+    edit:
+      page_title: "Confirm Changing Email"
+      page_description: "You've requested that your account's e-mail address be changed to:"
+      submit_button: "Confirm"
+    update:
+      success_msg: "Email applied"
+  admin:
+    users:
+      common:
+        edit_link: "Edit"
+        show_link: "Show"
+        search_link: "Search"
+        destroy_link: "Destroy"
+        confirm_msg: "Are you sure?"
+        no_permission_msg: "Permission denied."
+      index:
+        page_title: "User Management - Search"
+        legend: "Search Criteria"
+        role_name: "User has role"
+        match: "And match"
+        all: "- All Criteria -"
+        any: "- Any Criteria -"
+        fullname_contains: "Fullname contains"
+        login_contains: "Login contains"
+        email_ends_with: "Email ends with"
+        active: "Active?"
+        search_button: "Search"
+        new_user_button: "Create new user"
+        found: "Found"
+        actions_header: "Actions"
+      new:
+        page_title: "User Management - New User"
+        create_button: "Create"
+      create:
+        success_msg: "User was successfully created."
+      show:
+        page_title: "User Management - Show"
+      edit:
+        page_title: "User Management - Edit"
+        add_role: "Add Role"
+        remove_role: "Remove Role"
+        update_button: "Update"
+        update_role_button: "Update Role"
+      update:
+        success_msg: 'User was successfully updated.'
+      change_role:
+        failure_msg:  "Unknown Action"
+      destroy:
+        success_msg: "Successfully destroy user: "
+        failure_msg: "Unable to destroy user "
+  backoffice_title: "Backoffice"
+  manage:
+    products:
+      common:
+        edit: "Edit"
+        show: "Show"
+        destroy: "Destroy"
+        search: "Search Products"
+        add: "Add"
+        remove: "Remove"
+        remove_it: "&laquo;Remove it?&raquo;"
+        new_item_link: "New Item"
+        new_product_link: "New Package"
+        create_button: "Create"
+        update_button: "Update"
+        note_msg: "* Not published products are unavailable for sale"
+      index:
+        code_begins_with: "Code begins with"
+        page_title: "Product Search"
+        legend: "Search Criteria"
+        name_contains: "Name contains"
+        "published?": "Published?"
+        match: "Match"
+        all: "- All Criteria -"
+        any: "- Any Criteria -"
+        search_button: "Search"
+        found: "Found"
+        actions_header: "Actions"
+    items:
+      common:
+        parent_item: "Parent Item "
+      new:
+        page_title: "New Item"
+      edit:
+        page_title: "Edit Item"
+      show:
+        page_title: "Show Item"
+      create:
+        success_msg: "Item was successfully created."
+      update:
+        success_msg: "Item was successfully updated."
+    packages:
+      common:
+        search_item: "Search and pick some items as components"
+        no_item_found: "Please input search criteria"
+      new:
+        page_title: "New Package"
+      edit:
+        page_title: "Edit Package"
+      show:
+        page_title: "Show Package"
+      create:
+        success_msg: "Package was successfully created."
+      update:
+        success_msg: "Package was successfully updated."
+    orders:
+      index:
+        page_title: "Order Search"
+        legend: "Search Criteria"
+        order_num_contains: "Order No. contains"
+        user_email_begins_with: "Email begins with"
+        total_gt: "Total greater than"
+        total_lt: "Total less than"
+        placed_after: "Placed after"
+        placed_before: "Placed before"
+        match: "Match"
+        all: "- All Criteria -"
+        any: "- Any Criteria -"
+        search_button: "Search"
+        found: "Found"
+        "empty?": "Empty?"
+        actions_header: "Actions"
+        pay_button: "Pay!"
+        ship_button: "Ship!"
+        void_button: "Void!"
+        confirm_void_msg: "Are you sure?"
+        destroy_button: "Destroy"
+        confirm_destroy_msg: "Are you sure?"
+        resend_button: "Resend Receipt"
+      pay:
+        success_msg: "Order has been paid"
+        failed_msg: "Unable to pay for the order "
+      ship:
+        success_msg: "Order has been shipped "
+        failed_msg: "Unable to ship the order "
+      void:
+        success_msg: "Order has been shipped "
+        failed_msg: "Unable to ship the order "
+      destroy:
+        success_msg: "Successfully destroy an order "
+        failed_msg: "Unable to destroy the order "
+  product:
+    pictures: "Pictures"
+    downloads: "Downloads"
+    variations: "Variations"
+    components: "Components"
+    code: "Code"
+    name: "Name"
+    price: "Price"
+    rank: "Rank"
+    published: "Published"
+    not_published: "Not published"
+    date_available: "Date available"
+    description: "Description"
+    no_picture: "No picture"
+    qty: "Qty"
+    quantity: "Quantity"
+  store:
+    index:
+      welcome_msg: "Welcome"
+    show:
+      add_button: "Add to cart"
+      package_contains_msg: "This package contains the following items"
+      payment_method: "Payment Method: {{mthd}}"
+    cart:
+      empty_msg:  "Your Cart is empty!"
+      title: "Shopping Cart"
+      update_button: "Update Cart"
+      empty_button: "Empty Cart"
+      checkout_button: "Checkout"
+    update_cart:
+      success_msg: "Cart was successfully updated!"
+      failed_msg: "Unable to update cart!"
+  orders:
+    common:
+      subtotal: "Subtotal"
+      total: "Total"
+      billing_address: "Billing Address"
+      shipping_address: "Shipping Address"
+    index:
+      page_title: "My Orders"
+      found: "Found"
+  checkout:
+    common:
+      shopping_link: "Continue Shopping >>"
+      failed_msg: "Checkout is not valid"
+      payment_not_required_msg: "Payment not required"
+      payment_accept_msg: "Order & Payment Accepted"
+      payment_need_verification_msg: "Order is recorded. But payment need verfication"
+      payment_need_investigation_msg: "Order is recorded. But payment need further investigation"
+    start:
+      page_title: "Check out - Input Addresses"
+      next_page_button: "Continue"
+    update_address:
+      success_msg: "Billing address and shipping address updated!"
+    payment:
+      page_title: "Check out - Payment"
+      no_payment_msg: "Order accepted, no payment is required"
+      card_safety_msg: "We don't store credit card details"
+      card_payment: "Card Payment"
+      card_owner: "Card Owner"
+      card_type: "Card Type"
+      card_number: "Card NUmber"
+      expiration_date: "Expiration Date"
+      pay_button: "Pay Now"
+      warning_msg: "*Warning: Please enable SSL"
+      or: "Or"
+    review:
+      page_title: "Check out - Confirm Payment"
+      confirm_message: "Receive payment information from 'PayPal', Please confirm to complete this order"
+      payer: "PayPal Account Holder"
+      email: "Email"
+      amount: "Amount"
+      confirm_button: "Confirm Payment"
+      order_num_not_match_msg: "Order Number Not Match. "
+      payer_not_verified_msg: "Payer Status Not Verified. "
+      currency_not_match_msg: "Currency Not Match. "
+      total_amt_not_match_msg: "Total Amount Not Match. "
+  download:
+    index:
+      page_title: "My Downloads"
+      found: "Found"
+      product_name: "Product Name"

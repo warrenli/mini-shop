@@ -1,0 +1,23 @@
+development:
+  host: "localhost:3000"
+  admin_email: "Mini Shop Owner<info@minishop.com>"
+  auto_activate: true
+  store_url: "http://localhost:3000"
+  store_name: "Mini Shop"
+  currency: "HKD"
+
+test:
+  host: "localhost:3000"
+  admin_email: "Mini Shop Owner<info@minishop.com>"
+  auto_activate: true
+  store_url: "http://localhost:3000"
+  store_name: "Mini Shop"
+  currency: "HKD"
+
+production:
+  host: "minishop.com"
+  admin_email: "Mini Shop Owner<info@minishop.com>"
+  auto_activate: true
+  store_url: "http://minishop.com"
+  store_name: "Mini Shop"
+  currency: "HKD"
