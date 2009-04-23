@@ -11,7 +11,7 @@ class DownloadsController < CurrentUserController
       dl = download_link.download
       filename = dl.data_file_name
       filetype = dl.data_content_type
-      path= "#{RAILS_ROOT}/asset/downloads/datas/#{dl.id}/#{filename}"
+      path= "#{RAILS_ROOT}/assets/downloads/datas/#{dl.id}/#{filename}"
 
       send_file("#{path}",
                 :filename     =>  "#{filename}",

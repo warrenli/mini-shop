@@ -1,6 +1,6 @@
 *.sqlite3
 .DS_Store
-asset/*
+assets/*
 config/database.yml
 coverage/*
 db/schema.rb

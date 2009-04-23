@@ -3,7 +3,7 @@ class Download < UserUpload
   has_many   :download_links, :foreign_key => "user_upload_id"
 
   has_attached_file :data,
-    :path => ":rails_root/asset/:class/:attachment/:id/:basename.:extension"
+    :path => ":rails_root/assets/:class/:attachment/:id/:basename.:extension"
 #    :url  => "/downloads/:id",
 
   #validates_attachment_presence :data
