@@ -58,6 +58,7 @@ class Order < ActiveRecord::Base
   named_scope :checked_out,  :conditions => ["has_checked_out = 1"]
   named_scope :not_checked_out,  :conditions => ["has_checked_out = 0"]
   named_scope :limit,     lambda { |num| { :limit => num } }
+  named_scope :obsolete_by, lambda { |dy|   {:conditions=> ["state in ('initialized','assigned') and has_checked_out = 0 and order_num is null and updated_at < ?", dy.days.ago.beginning_of_day.to_s(:db)]} }
 
 
   state_machine :initial => 'initialized' do

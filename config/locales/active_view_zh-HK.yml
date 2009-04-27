@@ -242,6 +242,9 @@ zh-HK:
       destroy:
         success_msg: "訂購單已刪除"
         failed_msg: "未能刪除訂購單 "
+      resend_receipt:
+        success_msg: "成功送出訂購單給帳戶 "
+        failed_msg: "未能送出訂購單給帳戶 "
   product:
     pictures: "圖片"
     downloads: "下載檔"

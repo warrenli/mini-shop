@@ -30,6 +30,9 @@ class Manage::ItemsController < Manage::BaseController
     else
       render :action => "new"
     end
+  rescue Exception => e
+    flash[:notice] = e
+    render :action => "new"
   end
 
   def update
@@ -39,6 +42,9 @@ class Manage::ItemsController < Manage::BaseController
     else
       render :action => "edit"
     end
+  rescue Exception => e
+    flash[:notice] = e
+    render :action => "edit"
   end
 
   def destroy

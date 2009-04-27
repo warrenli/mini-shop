@@ -242,6 +242,9 @@ en-US:
       destroy:
         success_msg: "Successfully destroy an order "
         failed_msg: "Unable to destroy the order "
+      resend_receipt:
+        success_msg: "Successfully resend receipt to user "
+        failed_msg: "Unable to resend receipt to user "
   product:
     pictures: "Pictures"
     downloads: "Downloads"
