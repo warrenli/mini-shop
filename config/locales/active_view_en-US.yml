@@ -309,7 +309,7 @@ en-US:
       card_number: "Card NUmber"
       expiration_date: "Expiration Date"
       pay_button: "Pay Now"
-      warning_msg: "*Warning: Please enable SSL"
+      warning_msg: "*Warning: SSL is not enabled"
       or: "Or"
     review:
       page_title: "Check out - Confirm Payment"

@@ -309,7 +309,7 @@ zh-HK:
       card_number: "信用卡號碼"
       expiration_date: "失效日期"
       pay_button: "即時付款"
-      warning_msg: "*注意: 請啟動SSL"
+      warning_msg: "*注意: 未有啟動SSL"
       or: "或"
     review:
       page_title: "結帳 - 確認付款"

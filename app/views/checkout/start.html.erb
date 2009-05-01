@@ -26,7 +26,7 @@
 <%= form.collection_select :country_id, Country.all, :id, :name, { :prompt => true } %>
 </p>
   <% unless form.object.new_record? %>
-  <%= form.hidden_field :id %>(ID: <%= form.object.id %>)
+  <%= form.hidden_field :id %>
   <% end %>
 <% end %>
 </fieldset>
@@ -53,7 +53,7 @@
 <%= form.collection_select :country_id, Country.all, :id, :name, { :prompt => true } %>
 </p>
   <% unless form.object.new_record? %>
-  <%= form.hidden_field :id %>(ID: <%= form.object.id %>)
+  <%= form.hidden_field :id %>
   <% end %>
 <% end %>
 </fieldset>
