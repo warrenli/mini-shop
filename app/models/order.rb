@@ -148,7 +148,7 @@ class Order < ActiveRecord::Base
   end
 
   def basic_options
-    options = { "desc"             => 'Order No.: ' + self.order_num,
+    options = { "desc"             => 'Order No. ' + self.order_num,
     #            "invnum"           => self.token,         # hash form of order_num
                 "currencycode"     => self.currency_code,
                 "amt"              => self.total,

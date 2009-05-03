@@ -16,7 +16,7 @@
   <%= render :partial => "cart_line", :collection => cart.order_product_lines %>
 
   <tr>
-    <td><%= number_to_currency(cart.fetch_subtotal) %></td>
+    <td><% # = number_to_currency(cart.fetch_subtotal) %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td class="numeric"><%= t('orders.common.total') %></td>
