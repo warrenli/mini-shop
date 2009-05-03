@@ -1,46 +1,40 @@
 h1. Mini-shop
 
-A simple online shop selling downloadable products. Users can pay for the products using credit card or through PayPal.  Initially, it supports both English and Chinese(zh-hk).  It can be extended for other languages.
+A simple online shop selling downloadable products. Users can pay for the products using credit card or through PayPal.
+
+Initially, it supports both English and Chinese(zh-hk).  It can be extended for other languages.
 
 
 h2. Features
 
 * Based on "kowloon":http://github.com/warrenli/kowloon/tree/master
-
 * Able to generate continuous/non-interrupted numeric sequence as order number
-
 * Use Gmail for email delivery
-
 * Administration functions include
 ** User management
 ** Product management
 ** Order management
-
 * Versatile products structure. Products can either be an item or a package
 ** Item is the basic element for sale
-** Item may have variations, which have different prices. For example a book can be a simple text file or colorful pdf file.
+** Item may have variations, which have different prices. For example, a book is sold as a simple text file or a colorful pdf file.
 ** Different items can be packed into a single package, usually at a discounted price
 
 
 h2. Setup
 
 # Install gem "log4r":http://log4r.sourceforge.net/
-
 # Create the following directories
 ## log
 ## tmp
 ## asset
 ## public/pictures
-
 # Edit config/app_config.yml to define system parameters
-
 # Edit config/initializers/mail.rb to use Gmail as mail server
-
 # Edit config/paypal_config.rb to store your PayPal API signature
 
 
 h2. Misc
 
-* URL for administrative functions is http://yourdomain/manage. Default adminstrator is 'minishopadmin' and password is 'secretpassword'
+* URL for administrative functions is 'http://yourdomain/manage'. Default adminstrator is 'minishopadmin' and password is 'secretpassword'
 
 * SSL is not enabled
