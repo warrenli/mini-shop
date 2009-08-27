@@ -1,8 +1,6 @@
 class CheckoutController < CurrentUserController
   DEBUG = (RAILS_ENV != "production")
 
-  protect_from_forgery :except => [:ipn]
-
   def start
     @order = Order.shopping.find(:first, :conditions => [ "id = ?", session[:order_id] ])
     if @order.nil? or @order.empty? or (@order.user and @order.user != @user)
@@ -158,7 +156,7 @@ class CheckoutController < CurrentUserController
     order = Order.not_checked_out.by_state("assigned").by_user(@user).
                 find(:first, :conditions => [ "id = ?", session[:order_id] ])
     raise t('checkout.common.failed_msg') unless order
-    notifyURL="#{get_server_path}/checkout/ipn/#{order.token}"
+    notifyURL="#{get_server_path}/ppservice/ipn"
     options = { :method        => 'DOExpressCheckoutPayment',
                 :token         => session[:ec_response]["TOKEN"],
                 :payerid       => session[:ec_response]["PAYERID"],
@@ -222,7 +220,7 @@ class CheckoutController < CurrentUserController
     if order.can_pay? and order.total > 0.0
       order.update_attributes( {:recipient => @user.full_description })
       order.reset_token!
-      notifyURL="#{get_server_path}/checkout/ipn/#{order.token}"
+      notifyURL="#{get_server_path}/ppservice/ipn"
       options = { "method"           => 'DoDirectPayment',
                   "ip_address"       => request.remote_ip,
                   "paymentaction"    => 'Sale',
@@ -285,34 +283,6 @@ class CheckoutController < CurrentUserController
   rescue Exception => e
     flash[:notice] = e
     redirect_to payment_url
-  end
-
-  def ipn
-    @PayPalLog ||= PayPalSDKUtils::Logger.getLogger(PAYPAL_IPN_LOG)
-    order = Order.by_token(params[:token]).first
-    order_id = order ? order.id : nil
-    PaymentNotification.create!(:params => params, :token => params[:token], :order_id => order_id,
-        :status => params[:payment_status], :txn_id => params[:txn_id])
-    @PayPalLog.info "IPN_notify: #{CGI.unescape(params.inspect)}"
-    ipn = PayPalSDK::Ipn.new(request.raw_post)
-    if ["VERIFIED", "INVALID"].include?(ipn.result)
-      params = ipn.params
-      if params["test_ipn"] == "1"
-        # This is a test in sandbox
-      end
-      if ["Completed","Denied","Failed","Pending"].include?(params["payment_status"])
-         #add your business logic here
-         # For a complete list of valid payment_status, refer to PayPal API Reference
-      else
-         #Reason to be suspicious
-      end
-    else
-      @PayPalLog.info "IPN_unknown_result: #{ipn.result}"
-    end
-    render :nothing => true
-  rescue Errno::ENOENT => exception
-    @PayPalLog.info "IPN_exception: " + exception
-    raise_error
   end
 
   def sub_layout

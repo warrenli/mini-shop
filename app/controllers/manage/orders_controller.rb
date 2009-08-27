@@ -9,6 +9,7 @@ class Manage::OrdersController < Manage::BaseController
 
   def show
     @payment = @order.completed_payment
+    @ipns = PaymentNotification.find_all_by_order_id(@order.id, :order => "created_at DESC")
   end
 
   def pay

@@ -497,7 +497,7 @@ describe CheckoutController do
       order.should_not be_nil
       order.can_pay?.should be_false
       session[:order_id] = order.id
-      put :pay_dp, "acct"=>"4916322182862824", "date"=>{"month"=>"4", "year"=>"2009"},
+      put :pay_dp, "acct"=>"4916322182862824", "date"=>{"month"=>"4", "year"=>"2011"},
                    "cvv2"=>"999", "creditcardtype"=>"Visa"
       response.flash[:notice].should_not be_nil
       response.should redirect_to(payment_url)
@@ -507,12 +507,13 @@ describe CheckoutController do
       @order.currency_code.should == 'HKD'
       @order.can_pay?.should be_true
       session[:order_id] = @order.id
-      put :pay_dp, "acct"=>"4916322182862824", "date"=>{"month"=>"4", "year"=>"2009"},
+      put :pay_dp, "acct"=>"4916322182862824", "date"=>{"month"=>"4", "year"=>"2011"},
                    "cvv2"=>"999", "creditcardtype"=>"Visa"
       assigns(:caller).should be_true
       txn = assigns(:transaction)
       txn.success?.should be_false
-      txn.response["L_SHORTMESSAGE0"].should == ["Unsupported Currency."]
+#      txn.response["L_SHORTMESSAGE0"].should == ["Unsupported Currency."]
+       txn.response["L_SHORTMESSAGE0"].to_s.should =~ /transaction cannot be processed/
       response.should redirect_to(payment_url)
     end
   end

@@ -181,3 +181,17 @@
 <hr class="plain"/>
 <% end %>
 
+<% unless @ipns.empty? %>
+<h2>Instant Payment Notification in detail</h2>
+  <% @ipns.each do |ipn| %>
+  <hr class="plain"/>
+  <div class="prepend-1 span-21 last">
+    <h3>IPN txn id: <%= ipn.txn_id %> | status: <%= ipn.status %> </h3>
+    <% for k, v in ipn.params.sort -%>
+    <label><%= "#{k} : " -%></label><%= "#{v}" -%><br />
+    <% end -%>
+  </div>
+  <% end %>
+<% end %>
+
+<hr class="plain"/>
