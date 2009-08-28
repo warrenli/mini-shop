@@ -1,27 +1,9 @@
-[submodule "vendor/plugins/authlogic"]
-	path = vendor/plugins/authlogic
-	url = git://github.com/binarylogic/authlogic.git
 [submodule "vendor/plugins/authorization"]
 	path = vendor/plugins/authorization
 	url = git://github.com/DocSavage/rails-authorization-plugin.git
 [submodule "vendor/plugins/i18n_label"]
 	path = vendor/plugins/i18n_label
 	url = git://github.com/iain/i18n_label.git
-[submodule "vendor/plugins/machinist"]
-	path = vendor/plugins/machinist
-	url = git://github.com/notahat/machinist.git
-[submodule "vendor/plugins/paperclip"]
-	path = vendor/plugins/paperclip
-	url = git://github.com/thoughtbot/paperclip.git
-[submodule "vendor/plugins/rails-footnotes"]
-	path = vendor/plugins/rails-footnotes
-	url = git://github.com/josevalim/rails-footnotes.git
-[submodule "vendor/plugins/rspec-on-rails-matchers"]
-	path = vendor/plugins/rspec-on-rails-matchers
-	url = git://github.com/ckozus/rspec-on-rails-matchers.git
-[submodule "vendor/plugins/searchlogic"]
-	path = vendor/plugins/searchlogic
-	url = git://github.com/binarylogic/searchlogic.git
 [submodule "vendor/plugins/state_machine"]
 	path = vendor/plugins/state_machine
 	url = git://github.com/pluginaweek/state_machine.git
