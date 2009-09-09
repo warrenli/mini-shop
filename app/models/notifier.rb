@@ -4,8 +4,8 @@ class Notifier < ActionMailer::Base
 
   def password_reset_instructions(user)
     subject       "重置密碼方法 - Password Reset Instructions"
-    from          APP_CONFIG[:admin_email]
-    recipients    user.email
+    from          add_angle_brackets APP_CONFIG[:admin_email]
+    recipients    add_angle_brackets user.email
     sent_on       Time.now.utc
     body          :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
     content_type  "text/plain"
@@ -13,8 +13,8 @@ class Notifier < ActionMailer::Base
 
   def activation_instructions(user)
     subject       "帳戶啟動方法 - Activation Instructions"
-    from          APP_CONFIG[:admin_email]
-    recipients    user.email
+    from          add_angle_brackets APP_CONFIG[:admin_email]
+    recipients    add_angle_brackets user.email
     sent_on       Time.now.utc
     body          :account_activation_url => register_url(user.perishable_token)
     content_type  "text/plain"
@@ -22,8 +22,8 @@ class Notifier < ActionMailer::Base
 
   def activation_confirmation(user)
     subject       "帳戶啟動完畢- Activation Complete"
-    from          APP_CONFIG[:admin_email]
-    recipients    user.email
+    from          add_angle_brackets APP_CONFIG[:admin_email]
+    recipients    add_angle_brackets user.email
     sent_on       Time.now.utc
     body          :root_url => root_url
     content_type  "text/plain"
@@ -31,10 +31,17 @@ class Notifier < ActionMailer::Base
 
   def email_verification(user, new_email, request_code)
     subject       "確認新電郵地址 - Confirm New Email Address"
-    from          APP_CONFIG[:admin_email]
-    recipients    new_email
+    from          add_angle_brackets APP_CONFIG[:admin_email]
+    recipients    add_angle_brackets new_email
     sent_on       Time.now.utc
     body          :confirm_url => change_email_url(request_code)
     content_type  "text/plain"
+  end
+
+  private
+
+  def add_angle_brackets(email)
+    email if email =~ /^<.*>$/
+    "<" << email << ">"
   end
 end
