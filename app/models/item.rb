@@ -6,7 +6,7 @@ class Item < Product
   has_many   :variations,  :class_name => 'Item', :foreign_key => 'parent_id',
     :dependent => :destroy, :order => "position ASC, updated_at DESC"
   accepts_nested_attributes_for :variations
-  attr_accessible :variations_attributes, :allow_destroy => true
+  attr_accessible :variations_attributes
 
   has_many :components, :dependent => :destroy, :class_name => 'PackageComponent',
     :order => "position ASC", :include => :package #, :foreign_key => 'item_id'

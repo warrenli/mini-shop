@@ -14,7 +14,7 @@
   <%= stylesheet_link_tag 'backoffice' %>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://malsup.com/jquery/form/jquery.form.js"></script>
+  <%= javascript_include_tag "jquery.form" %>
   <%= javascript_include_tag "jquery.livequery" %>
 
   <!-- additional head elements -->
@@ -49,7 +49,7 @@
 
 <div class="container">
   <div id="footer" class="span-24 last">
-    <p>Copyright &copy; 2009</p>
+    <p>Copyright &copy; 2010</p>
   </div>
 </div>
 <!-- additional elements e.g. javascript -->

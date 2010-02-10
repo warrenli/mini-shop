@@ -5,12 +5,6 @@ describe StoreController do
     it "should map #index for '/'" do
       route_for(:controller => "store", :action => "index").should == "/"
     end
-    it "should map #index for '/store'" do
-      route_for(:controller => "store", :action => "index").should == "/store"
-    end
-    it "should map #index for '/store/index'" do
-      route_for(:controller => "store", :action => "index").should == "/store/index"
-    end
     it "should map #show for '/store/show/code'" do
       route_for(:controller => "store", :action => "show", :code => "code").should == "/store/show/code"
     end

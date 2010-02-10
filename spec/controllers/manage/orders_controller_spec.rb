@@ -280,24 +280,28 @@ describe Manage::OrdersController do
     end
     describe "PUT 'resend_receipt'" do
       it "receipt should be sent and redirect to mange_order_path" do
+        ActionMailer::Base.delivery_method = :test
         ActionMailer::Base.deliveries = []
         order = Order.make(:ip_address => "127.0.0.1", :user_id=>@user.id, :order_num=>"123",
                            :state=>"pending", :total=>0.0, :product_total=>0.0, :has_checked_out=>1)
-        put :resend_receipt, :id => order.id
+        assert_difference('ActionMailer::Base.deliveries.length', 1) do
+          put :resend_receipt, :id => order.id
+        end
         assigns[:order].should == order
-        ActionMailer::Base.deliveries.size.should == 1
         ActionMailer::Base.deliveries.first.subject.should =~ /RESEND/#correct subject
-        response.flash[:notice].should_not be_nil
+        response.flash[:notice].should == I18n.t("manage.orders.resend_receipt.success_msg")
         response.should redirect_to(manage_order_path(order))
       end
       it "no receipt should be sent and redirect to mange_order_path if order is voided" do
+        ActionMailer::Base.delivery_method = :test
         ActionMailer::Base.deliveries = []
         order = Order.make(:ip_address => "127.0.0.1", :user_id=>@user.id, :order_num=>"123",
                            :state=>"voided", :total=>0.0, :product_total=>0.0, :has_checked_out=>1)
-        put :resend_receipt, :id => order.id
+        assert_no_difference('ActionMailer::Base.deliveries.length') do
+          put :resend_receipt, :id => order.id
+        end
         assigns[:order].should == order
-        ActionMailer::Base.deliveries.size.should == 0
-        response.flash[:notice].should_not be_nil
+        response.flash[:notice].should == I18n.t("manage.orders.resend_receipt.failed_msg")
         response.should redirect_to(manage_order_path(order))
       end
     end
