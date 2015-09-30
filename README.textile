@@ -35,6 +35,6 @@ h2. Setup
 
 h2. Misc
 
-* URL for administrative functions is 'http://yourdomain/manage'. Default adminstrator is 'minishopadmin' and password is 'secretpassword'
+* URL for administrative functions is 'http://yourdomain/manage'. Default administrator is 'minishopadmin' and password is 'secretpassword'
 
 * SSL is not enabled
